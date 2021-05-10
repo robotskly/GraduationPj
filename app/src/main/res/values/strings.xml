@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">GraduationPj</string>
+    <string name="start_place">起点</string>
+    <string name="end_place">终点</string>
+    <string name="child_mode">儿童模式</string>
+    <string name="navigation_mode">导航</string>
+
+    <string name="note_menu">备忘录</string>
+    <string name="smart_service">智能服务中心</string>
+    <string name="gas_service">加油服务</string>
+    <string name="start_place_hint">请输入起点</string>
+    <string name="end_place_hint">请输入终点</string>
+    <string name="media_service">多媒体</string>
+    <string name="play_music">播放音乐</string>
+    <string name="stop_music">停止播放</string>
+    <string name="next_music">下一首歌</string>
+    <string name="close">关闭</string>
+    <string name="confirm">确认</string>
+    <string name="fail_location">定位失败</string>
+    <string name="no_route">没有路线</string>
+    <string name="quit_account">退出账号</string>
+    <string name="today_miles">今日里程数</string>
+    <string name="total_miles">历史里程数</string>
+
+
+    <string name="history_route">历史路线</string>
+    <string name="user_info">个人信息</string>
+    <string name="vehicle_info">车辆信息</string>
+    <string name="update_info">查看更新</string>
+    <string name="system_setting">系统设置</string>
+    <string name="system_name">车载平台系统 v1.0.0</string>
+    <string name="login_name">用户</string>
+    <string name="login_password">密码</string>
+    <string name="login_name_hint">请输入用户名</string>
+    <string name="login_password_hint">请输入密码</string>
+    <string name="user_register">注册新用户</string>
+    <string name="change_pass">更改密码</string>
+
+</resources>

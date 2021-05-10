@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/shape_s14ff5c19_c8" android:state_selected="true" />
+    <item android:drawable="@drawable/shape_sf0f2f5_c8" android:state_selected="false" />
+    <item android:drawable="@drawable/shape_sf0f2f5_c8" />
+</selector>

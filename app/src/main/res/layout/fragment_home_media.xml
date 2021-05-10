@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_f1f2f4">
+
+    <ImageView
+        android:id="@+id/songPicIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/icon_option_train_test"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/songTitleTv"
+        style="@style/s20_c333_b"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="start"
+        app:layout_constraintEnd_toStartOf="@+id/moreMenuIv"
+        app:layout_constraintStart_toEndOf="@+id/songPicIv"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="很爱很爱你" />
+
+    <TextView
+        android:id="@+id/singerInfoTv"
+        style="@style/s16_c999999"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="2dp"
+        android:gravity="start"
+        app:layout_constraintEnd_toStartOf="@+id/moreMenuIv"
+        app:layout_constraintStart_toEndOf="@+id/songPicIv"
+        app:layout_constraintTop_toBottomOf="@+id/songTitleTv"
+        tools:text="刘若英" />
+
+    <ImageView
+        android:id="@+id/moreMenuIv"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/icon_option_train_test"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/songTitleTv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/split1View"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="12dp"
+        android:background="@color/color_333333"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/singerInfoTv" />
+
+    <ScrollView
+        android:id="@+id/songListSv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/musicProgressPb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/split1View">
+
+        <LinearLayout
+            android:id="@+id/songListLl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123123" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <ProgressBar
+        android:id="@+id/musicProgressPb"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/songListSv"
+        app:layout_constraintBottom_toTopOf="@+id/musicActionLl"
+        />
+    <LinearLayout
+        android:id="@+id/musicActionLl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="36dp"
+        android:layout_marginBottom="20dp"
+        android:weightSum="3"
+        app:layout_constraintStart_toStartOf="parent">
+        <ImageView
+            android:id="@+id/musicPreIv"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_option_train_test"/>
+        <ImageView
+            android:id="@+id/musicPlayIv"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_option_train_test"/>
+        <ImageView
+            android:id="@+id/musicNextIv"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_option_train_test"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

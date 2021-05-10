@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_usercenter"
+    android:paddingHorizontal="16dp"
+    android:paddingBottom="16dp">
+
+    <View
+        android:id="@+id/statusBarView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/backIv"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/icon_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusBarView" />
+
+    <ImageView
+        android:id="@+id/profilePhotoIv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/icon_avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backIv" />
+
+    <TextView
+        android:id="@+id/userNameTv"
+        style="@style/s18_c333_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/userIdTv"
+        app:layout_constraintStart_toEndOf="@+id/profilePhotoIv"
+        tool:text="汪勇" />
+
+    <TextView
+        android:id="@+id/userIdTv"
+        style="@style/s12_c333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profilePhotoIv"
+        app:layout_constraintStart_toEndOf="@+id/profilePhotoIv"
+        tool:text="01403876" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/commissionCl"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/shape_sfff_c10"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userIdTv">
+
+        <TextView
+            android:id="@+id/salaryTitleTv"
+            style="@style/s12_c666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/total_miles"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/salaryValueTv"
+            style="@style/s27_c333_b"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/splitView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/salaryTitleTv"
+            tool:text="231" />
+
+        <View
+            android:id="@+id/splitView"
+            android:layout_width="0.5dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="34dp"
+            android:background="#B2B2B2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/todaySalaryTv"
+            style="@style/s12_c666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/today_miles"
+            app:layout_constraintStart_toEndOf="@id/splitView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/salaryTodayTv"
+            style="@style/s27_c333_b"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/enterTv"
+            app:layout_constraintStart_toStartOf="@id/splitView"
+            app:layout_constraintTop_toBottomOf="@+id/todaySalaryTv"
+            tool:text="231" />
+
+        <TextView
+            android:id="@+id/enterTv"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/icon_enter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commissionCl">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="24dp">
+            <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
+                android:id="@+id/historyTraceCl"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                app:optionIcon="@drawable/icon_option_history_task"
+                app:optionText="@string/history_route" />
+            <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
+                android:id="@+id/userInfoCl"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                app:optionIcon="@drawable/icon_option_history_task"
+                app:optionText="@string/user_info" />
+            <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
+                android:id="@+id/vehicleInfoCl"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                app:optionIcon="@drawable/icon_option_history_task"
+                app:optionText="@string/vehicle_info" />
+            <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
+                android:id="@+id/settingCl"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                app:optionIcon="@drawable/icon_option_history_task"
+                app:optionText="@string/system_setting" />
+            <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
+                android:id="@+id/updateCl"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                app:optionIcon="@drawable/icon_option_history_task"
+                app:optionText="@string/update_info" />
+
+
+            <TextView
+                android:id="@+id/quitAccountTv"
+                style="@style/s18_c333"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/bg_shadow_btn"
+                android:gravity="center"
+                android:text="@string/quit_account"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

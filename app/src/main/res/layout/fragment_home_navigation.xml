@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.amap.api.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/exitIv"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/icon_map_route_return"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/startCl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="17.5dp"
+        android:background="@drawable/shape_sfff_c10"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="17dp"
+        app:layout_constraintBottom_toTopOf="@+id/endCl">
+
+        <TextView
+            android:id="@+id/startPlaceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_marginTop="3dp"
+            android:text="@string/start_place"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/startInfoEt"
+            style="@style/s18_c333_b"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/startPlaceTv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="北京市海淀区   183****7685  乐乐"
+            android:autofillHints="@string/start_place_hint"
+            android:inputType="text"
+            android:hint="@string/start_place_hint"/>
+
+        <View
+            android:id="@+id/gapLineView"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="4dp"
+            android:background="#e6e6e6"
+            app:layout_constraintTop_toBottomOf="@+id/startInfoEt" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/endCl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="17.5dp"
+        android:background="@drawable/shape_sfff_c10"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="17dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/endPlaceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_marginTop="3dp"
+            android:text="@string/end_place"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/endInfoEt"
+            style="@style/s18_c333_b"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/endPlaceTv"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="北京市海淀区阳光灿烂小区5号楼三单元1811   183****7685  乐乐" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
