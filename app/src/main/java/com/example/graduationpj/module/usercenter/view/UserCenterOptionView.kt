@@ -17,4 +17,5 @@ class UserCenterOptionView @JvmOverloads constructor(context: Context, attribute
         optionTv.text = attrArray.getText(R.styleable.UserCenterOptionView_optionText)
         attrArray.recycle()
     }
+
 }
