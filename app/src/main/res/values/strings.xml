@@ -21,8 +21,10 @@
     <string name="quit_account">退出账号</string>
     <string name="today_miles">今日里程数</string>
     <string name="total_miles">历史里程数</string>
-
-
+    <string name="note_title">备忘录标题</string>
+    <string name="note_content">请输入备忘录内容</string>
+    <string name="note_bind_route">是否绑定行程</string>
+    <string name="note_alarm_time">设置提醒时间</string>
     <string name="history_route">历史路线</string>
     <string name="user_info">个人信息</string>
     <string name="vehicle_info">车辆信息</string>
@@ -55,6 +57,10 @@
     <string name="basic_info_miles">目前公里数</string>
     <string name="basic_info_miles_hint">请入车辆目前的公里数</string>
     <string name="basic_info_add_vehicle">我还有一辆</string>
+    <string name="bind_route">绑定行程</string>
+    <string name="bind_route_hint">点击选择绑定行程</string>
+    <string name="note_title_hint">在此输入标题</string>
+    <string name="note_content_hint">在此输入备忘录内容</string>
 
 
 
