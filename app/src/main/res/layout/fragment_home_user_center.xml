@@ -43,7 +43,7 @@
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/userIdTv"
         app:layout_constraintStart_toEndOf="@+id/profilePhotoIv"
-        tool:text="汪勇" />
+        tool:text="芦超群" />
 
     <TextView
         android:id="@+id/userIdTv"
