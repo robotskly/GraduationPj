@@ -92,11 +92,11 @@ abstract class BaseTitleFragment : BaseFragment() {
     private fun requestWeatherInfo() {
         NetWorkTask.newTask().requestInfo(NetWorkAPI.WeatherAPI+"北京",object :TaskCallBack{
             override fun onFail(e: Exception) {
-                TODO("Not yet implemented")
+                return
             }
 
             override fun onSuccess(res: String) {
-                TODO("Not yet implemented")
+                return
             }
         })
     }

@@ -10,97 +10,87 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        android:columnCount="4"
+        android:columnCount="3"
         android:rowCount="2"
         app:layout_constraintBottom_toTopOf="@+id/mMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/navigationIv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_row="0"
-            android:layout_rowWeight="1"
-            android:layout_column="0"
+        <TextView
+            android:id="@+id/navigationTv"
+            android:drawableTop="@drawable/icon_navigation"
+            android:text="@string/navigation_mode"
             android:layout_columnWeight="1"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
+            style="@style/s12_c333"
+            android:gravity="center"
             android:background="@drawable/shape_sf0f2f5_c8"
-            android:padding="30dp"
-            android:src="@drawable/icon_option_train_test" />
+            android:padding="20dp"
+            android:src="@drawable/icon_option_train_test"/>
+        <TextView
+            android:id="@+id/noteTv"
+            android:drawableTop="@drawable/icon_note"
+            android:text="@string/navigation_mode"
+            android:layout_columnWeight="1"
+            android:layout_margin="8dp"
+            style="@style/s12_c333"
+            android:gravity="center"
+            android:background="@drawable/shape_sf0f2f5_c8"
+            android:padding="20dp"
+            android:src="@drawable/icon_option_train_test"/>
 
-        <ImageView
-            android:id="@+id/noteIv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_row="1"
-            android:layout_rowWeight="1"
-            android:layout_column="1"
+        <TextView
+            android:id="@+id/mediaTv"
+            android:drawableTop="@drawable/icon_media"
+            android:text="@string/navigation_mode"
             android:layout_columnWeight="1"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
+            style="@style/s12_c333"
+            android:gravity="center"
             android:background="@drawable/shape_sf0f2f5_c8"
-            android:padding="30dp"
-            android:src="@drawable/icon_option_train_test" />
-
-        <ImageView
-            android:id="@+id/serviceIv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_row="1"
-            android:layout_rowWeight="1"
-            android:layout_column="0"
+            android:padding="20dp"
+            android:src="@drawable/icon_option_train_test"/>
+        <TextView
+            android:id="@+id/userCenterTv"
+            android:drawableTop="@drawable/icon_usercenter"
+            android:text="@string/navigation_mode"
             android:layout_columnWeight="1"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
+            style="@style/s12_c333"
+            android:gravity="center"
             android:background="@drawable/shape_sf0f2f5_c8"
-            android:padding="30dp"
-            android:src="@drawable/icon_option_train_test" />
-
-        <ImageView
-            android:id="@+id/mediaIv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_row="0"
-            android:layout_rowWeight="1"
-            android:layout_column="1"
+            android:padding="20dp"
+            android:src="@drawable/icon_option_train_test"/>
+        <TextView
+            android:id="@+id/communicationTv"
+            android:drawableTop="@drawable/icon_communicate"
+            android:text="@string/navigation_mode"
             android:layout_columnWeight="1"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
+            style="@style/s12_c333"
+            android:gravity="center"
             android:background="@drawable/shape_sf0f2f5_c8"
-            android:padding="30dp"
-            android:src="@drawable/icon_option_train_test" />
-
-        <ImageView
-            android:id="@+id/userCenterIv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_row="1"
-            android:layout_rowWeight="1"
-            android:layout_column="2"
+            android:padding="20dp"
+            android:src="@drawable/icon_option_train_test"/>
+        <TextView
+            android:id="@+id/serviceTv"
+            android:drawableTop="@drawable/icon_service"
+            android:text="@string/navigation_mode"
             android:layout_columnWeight="1"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
+            style="@style/s12_c333"
+            android:gravity="center"
             android:background="@drawable/shape_sf0f2f5_c8"
-            android:padding="30dp"
-            android:src="@drawable/icon_option_train_test" />
-
-        <ImageView
-            android:id="@+id/communicationIv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_row="0"
-            android:layout_rowWeight="1"
-            android:layout_column="2"
-            android:layout_columnWeight="1"
-            android:layout_margin="16dp"
-            android:background="@drawable/shape_sf0f2f5_c8"
-            android:padding="30dp"
-            android:src="@drawable/icon_option_train_test" />
+            android:padding="20dp"
+            android:src="@drawable/icon_option_train_test"/>
 
     </GridLayout>
 
     <com.example.graduationpj.support.widget.btmmenu.MenuM
         android:id="@+id/mMenu"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         app:backColor="@color/color_f1f2f4"
         app:count="4"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -92,22 +92,22 @@ class HomeFragment : BaseTitleFragment() {
             }
         }
 
-        navigationIv.setOnClickListener {
+        navigationTv.setOnClickListener {
             start(NavigationHomeFragment.newInstance())
         }
-        noteIv.setOnClickListener {
+        noteTv.setOnClickListener {
             start(NoteHomeFragment.newInstance())
         }
-        communicationIv.setOnClickListener {
+        communicationTv.setOnClickListener {
             start(CommunicationHomeFragment.newInstance())
         }
-        mediaIv.setOnClickListener {
+        mediaTv.setOnClickListener {
             start(MediaHomeFragment.newInstance())
         }
-        serviceIv.setOnClickListener {
+        serviceTv.setOnClickListener {
             start(ServiceHomeFragment.newInstance())
         }
-        userCenterIv.setOnClickListener {
+        userCenterTv.setOnClickListener {
             start(UserCenterHomeFragment.newInstance())
         }
     }

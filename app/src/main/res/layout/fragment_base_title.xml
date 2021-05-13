@@ -24,7 +24,7 @@
     <LinearLayout
         android:id="@+id/topBarLl"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:gravity="start"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
