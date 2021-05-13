@@ -3,14 +3,16 @@
     <string name="start_place">起点</string>
     <string name="end_place">终点</string>
     <string name="child_mode">儿童模式</string>
-    <string name="navigation_mode">导航</string>
-
-    <string name="note_menu">备忘录</string>
-    <string name="smart_service">智能服务中心</string>
-    <string name="gas_service">加油服务</string>
+    <string name="menu_navigation">导航</string>
+    <string name="menu_note">备忘录</string>
+    <string name="menu_smart_service">智能服务中心</string>
+    <string name="menu_gas_service">加油服务</string>
     <string name="start_place_hint">请输入起点</string>
     <string name="end_place_hint">请输入终点</string>
-    <string name="media_service">多媒体</string>
+    <string name="menu_media_service">多媒体</string>
+    <string name="menu_user_center">个人中心</string>
+    <string name="menu_communicate">联系</string>
+
     <string name="play_music">播放音乐</string>
     <string name="stop_music">停止播放</string>
     <string name="next_music">下一首歌</string>

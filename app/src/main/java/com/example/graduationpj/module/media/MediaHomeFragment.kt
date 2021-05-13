@@ -6,29 +6,36 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.graduationpj.R
 import com.example.graduationpj.module.media.model.Song
+import com.example.graduationpj.module.media.view.LocalMusicAdapter
 import com.example.graduationpj.module.media.view.SongCardView
 import com.example.graduationpj.support.base.page.BaseTitleFragment
 import com.example.graduationpj.support.utils.MusicUtil
+import kotlinx.android.synthetic.main.fragment_home_media.*
 import java.io.IOException
 
 
-class MediaHomeFragment :BaseTitleFragment(){
-    private val mediaPlayer:MediaPlayer = MediaPlayer()
-    private var songArrayList:ArrayList<Song> = arrayListOf()
-    private var songCardViewList:ArrayList<SongCardView> = arrayListOf()
-    companion object{
-        fun newInstance():MediaHomeFragment{
+class MediaHomeFragment : BaseTitleFragment() {
+    private val mediaPlayer: MediaPlayer = MediaPlayer()
+    private var songArrayList: ArrayList<Song> = arrayListOf()
+    private var songCardViewList: ArrayList<SongCardView> = arrayListOf()
+    private var localMusicAdapter:LocalMusicAdapter?=null
+
+    companion object {
+        fun newInstance(): MediaHomeFragment {
             return MediaHomeFragment()
         }
     }
+
     override fun onCreateContentView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_home_media,container,false)
+        return inflater.inflate(R.layout.fragment_home_media, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,23 +44,32 @@ class MediaHomeFragment :BaseTitleFragment(){
         initView()
         initAction()
     }
-    private fun initData(){
+
+    private fun initData() {
         songArrayList = MusicUtil.newInstance().getMusic(context)
     }
-    private fun initView(){
+
+    private fun initView() {
         songArrayList.forEach {
             val songCardView = context?.let { it1 -> SongCardView(it1) }
             songCardView?.updateView(song = it)
             songCardViewList.add(songCardView!!)
         }
+
+        musicListRv.layoutManager = LinearLayoutManager(context)
+       // musicListRv.addItemDecoration()
+        localMusicAdapter = LocalMusicAdapter(context!!,songArrayList)
+        musicListRv.adapter = localMusicAdapter
     }
-    private fun initAction(){
-        songCardViewList.forEach { cardView->
+
+    private fun initAction() {
+        songCardViewList.forEach { cardView ->
             cardView.setOnClickListener {
                 play(cardView.getSongPath())
             }
         }
     }
+
     fun play(path: String?) {
         try {
             //        重置音频文件，防止多次点击会报错
@@ -70,7 +86,7 @@ class MediaHomeFragment :BaseTitleFragment(){
         updateView()
     }
 
-    private fun updateView(){
+    private fun updateView() {
 
     }
 }

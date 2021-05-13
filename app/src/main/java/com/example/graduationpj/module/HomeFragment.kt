@@ -73,20 +73,20 @@ class HomeFragment : BaseTitleFragment() {
 
     private fun initAction() {
         mMenu.setOnItemClickListener { position ->
-            when(position){
-                0->{
+            when (position) {
+                0 -> {
 
                 }
-                1->{
+                1 -> {
 
                 }
-                2->{
+                2 -> {
 
                 }
-                3->{
+                3 -> {
 
                 }
-                else->{
+                else -> {
 
                 }
             }

@@ -20,7 +20,7 @@
         <TextView
             android:id="@+id/navigationTv"
             android:drawableTop="@drawable/icon_navigation"
-            android:text="@string/navigation_mode"
+            android:text="@string/menu_navigation"
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             style="@style/s12_c333"
@@ -31,7 +31,7 @@
         <TextView
             android:id="@+id/noteTv"
             android:drawableTop="@drawable/icon_note"
-            android:text="@string/navigation_mode"
+            android:text="@string/menu_note"
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             style="@style/s12_c333"
@@ -43,7 +43,7 @@
         <TextView
             android:id="@+id/mediaTv"
             android:drawableTop="@drawable/icon_media"
-            android:text="@string/navigation_mode"
+            android:text="@string/menu_media_service"
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             style="@style/s12_c333"
@@ -54,7 +54,7 @@
         <TextView
             android:id="@+id/userCenterTv"
             android:drawableTop="@drawable/icon_usercenter"
-            android:text="@string/navigation_mode"
+            android:text="@string/menu_user_center"
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             style="@style/s12_c333"
@@ -65,7 +65,7 @@
         <TextView
             android:id="@+id/communicationTv"
             android:drawableTop="@drawable/icon_communicate"
-            android:text="@string/navigation_mode"
+            android:text="@string/menu_communicate"
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             style="@style/s12_c333"
@@ -76,7 +76,7 @@
         <TextView
             android:id="@+id/serviceTv"
             android:drawableTop="@drawable/icon_service"
-            android:text="@string/navigation_mode"
+            android:text="@string/menu_smart_service"
             android:layout_columnWeight="1"
             android:layout_margin="8dp"
             style="@style/s12_c333"

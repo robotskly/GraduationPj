@@ -73,8 +73,8 @@ abstract class BaseTitleFragment : BaseFragment() {
         //getWeatherInfo getUserInfo
         userIconIv.setImageDrawable(userIcon)
         userNameTv.text = userName
-        weatherIconIv.setImageDrawable(context?.getDrawable(R.drawable.img_empty))
-        weatherTextTv.text = weatherText
+        weatherIconIv.setImageDrawable(context?.getDrawable(R.drawable.icon_sunny))
+       // weatherTextTv.text = weatherText
     }
 
     private fun initStatusBarBgView() {

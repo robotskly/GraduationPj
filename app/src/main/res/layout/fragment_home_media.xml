@@ -42,11 +42,11 @@
 
     <ImageView
         android:id="@+id/moreMenuIv"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:src="@drawable/icon_option_train_test"
+        android:src="@drawable/icon_more_select"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/songTitleTv"
         app:layout_constraintTop_toTopOf="parent" />
@@ -60,31 +60,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/singerInfoTv" />
-
-    <ScrollView
-        android:id="@+id/songListSv"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/musicListRv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/musicProgressPb"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/split1View">
-
-        <LinearLayout
-            android:id="@+id/songListLl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="12dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="123123" />
-        </LinearLayout>
-    </ScrollView>
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/musicProgressPb"
+        app:layout_constraintTop_toBottomOf="@+id/split1View"/>
 
     <ProgressBar
         android:id="@+id/musicProgressPb"
@@ -113,19 +97,19 @@
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_option_train_test"/>
+            android:src="@drawable/icon_pre"/>
         <ImageView
             android:id="@+id/musicPlayIv"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_option_train_test"/>
+            android:src="@drawable/selector_media_play_stop"/>
         <ImageView
             android:id="@+id/musicNextIv"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_option_train_test"/>
+            android:src="@drawable/icon_next"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

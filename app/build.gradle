@@ -72,4 +72,11 @@ dependencies {
     //OkHTTP
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'//retrofit
+//下面两个是RxJava 和RxAndroid
+    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'//转换器，请求结果转换成Model
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'//配合Rxjava 使用
+
 }
