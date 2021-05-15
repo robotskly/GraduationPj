@@ -1,8 +1,6 @@
 package com.example.graduationpj.module.media.view
 
 import android.content.Context
-import android.media.Image
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,13 +21,15 @@ class LocalMusicAdapter(context:Context,list:ArrayList<Song>): RecyclerView.Adap
         this.inflater = LayoutInflater.from(context)
         this.context = context
     }
+
     class MusicViewHolder(itemView: View?, context: Context) : RecyclerView.ViewHolder(itemView!!) {
-        //        var text: TextView = itemView?.findViewById(R.id.tv) as TextView
+        //var text: TextView = itemView?.findViewById(R.id.tv) as TextView
         var songTitleTv = itemView?.findViewById<TextView>(R.id.songTitleTv)
         var songSingerTv = itemView?.findViewById<TextView>(R.id.singerInfoTv)
         var durationTv = itemView?.findViewById<TextView>(R.id.durationTv)
         var songPicIv = itemView?.findViewById<ImageView>(R.id.songPicIv)
     }
+
     override fun getItemCount(): Int {
         return list?.size ?:0
     }
@@ -44,6 +44,5 @@ class LocalMusicAdapter(context:Context,list:ArrayList<Song>): RecyclerView.Adap
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
         return MusicViewHolder(inflater?.inflate(R.layout.view_song_card, parent, false), context!!)
     }
-
 
 }

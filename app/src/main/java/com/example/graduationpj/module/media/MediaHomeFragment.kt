@@ -55,9 +55,9 @@ class MediaHomeFragment : BaseTitleFragment() {
             songCardView?.updateView(song = it)
             songCardViewList.add(songCardView!!)
         }
-
+        //initRv
         musicListRv.layoutManager = LinearLayoutManager(context)
-       // musicListRv.addItemDecoration()
+        // musicListRv.addItemDecoration()
         localMusicAdapter = LocalMusicAdapter(context!!,songArrayList)
         musicListRv.adapter = localMusicAdapter
     }
@@ -79,7 +79,9 @@ class MediaHomeFragment : BaseTitleFragment() {
             //            异步准备资源，防止卡顿
             mediaPlayer.prepareAsync()
             //            调用音频的监听方法，音频准备完毕后响应该方法进行音乐播放
-            mediaPlayer.setOnPreparedListener(OnPreparedListener { mediaPlayer -> mediaPlayer.start() })
+            mediaPlayer.setOnPreparedListener(OnPreparedListener {
+                    mediaPlayer -> mediaPlayer.start()
+            })
         } catch (e: IOException) {
             e.printStackTrace()
         }

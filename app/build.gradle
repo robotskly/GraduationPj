@@ -7,7 +7,18 @@ plugins {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+    lintOptions {
+        abortOnError false
+    }
 
+//    signingConfigs {
+//        sfic_sign_config {
+//            keyAlias 'android'
+//            keyPassword 'android'
+//            storeFile file('/Users/sftc/Desktop/GraduationPj2/test.jks')
+//            storePassword 'android'
+//        }
+//    }
     defaultConfig {
         applicationId "com.example.graduationpj"
         minSdkVersion 21
@@ -18,12 +29,18 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {
             //设置支持的SO库架构（开发者可以根据需要，选择一个或多个平台的so）
-            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+            abiFilters "armeabi" , "armeabi-v7a", "arm64-v8a" , "x86", "x86_64"
         }
+// /Users/sftc/Desktop/GraduationPj2
     }
 
     buildTypes {
         release {
+            //在这里添加：
+            lintOptions {
+                checkReleaseBuilds false
+                abortOnError false
+            }
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -43,6 +60,10 @@ android {
 }
 
 dependencies {
+    implementation files('src/main/jniLibs/AMap_Location_V5.3.1_20210331.jar')
+    implementation files('src/main/jniLibs/AMap_Search_V7.9.0_20210331.jar')
+    implementation files('src/main/jniLibs/Android_Map3D_SDK_V7.9.1_20210414.jar')
+    compile fileTree(dir:'libs',include:['*.jar'])
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.2.0'
@@ -52,11 +73,6 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     //androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    //高德地图
-    compile 'com.amap.api:3dmap:latest.integration'
-    implementation 'com.amap.api:search:latest.integration'
-    implementation 'com.amap.api:location:latest.integration'
     //fragmentation
     implementation 'me.yokeyword:fragmentationx:1.0.1'
     //ormLite
@@ -73,7 +89,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
     compile 'com.squareup.retrofit2:retrofit:2.1.0'//retrofit
-//下面两个是RxJava 和RxAndroid
+    //下面两个是RxJava 和RxAndroid
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'//转换器，请求结果转换成Model

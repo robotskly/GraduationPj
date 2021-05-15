@@ -15,7 +15,8 @@ class MusicUtil {
         }
     }
     fun getMusic(context: Context?):ArrayList<Song>{
-        val cursor: Cursor? = context?.contentResolver?.query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,null,null,null, MediaStore.Audio.AudioColumns.IS_MUSIC)
+        //Internal 还是 External
+        val cursor: Cursor? = context?.contentResolver?.query(MediaStore.Audio.Media.INTERNAL_CONTENT_URI,null,null,null, MediaStore.Audio.AudioColumns.IS_MUSIC)
 
         if(cursor!=null){
             while(cursor.moveToNext()){
@@ -34,8 +35,6 @@ class MusicUtil {
                     }
                     songList.add(song)
                 }
-
-
             }
         }
         cursor?.close()

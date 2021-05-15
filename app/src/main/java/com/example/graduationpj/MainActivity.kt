@@ -1,13 +1,16 @@
 package com.example.graduationpj
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.graduationpj.module.HomeFragment
 import me.yokeyword.fragmentation.SupportActivity
-import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
+import java.util.*
 
 class MainActivity:SupportActivity(){
     //动态申请权限
@@ -31,6 +34,7 @@ class MainActivity:SupportActivity(){
         setContentView(R.layout.activity_main)
         loadRootFragment(R.id.containerRoot,HomeFragment.newInstance())
         askPermission()
+        println(Test.sHA1(this))
         //start(HomeFragment.newInstance())
     }
     private fun askPermission(){
@@ -43,4 +47,7 @@ class MainActivity:SupportActivity(){
             return
         ActivityCompat.requestPermissions(this, permissionNeed,1)
     }
+
+
+
 }
