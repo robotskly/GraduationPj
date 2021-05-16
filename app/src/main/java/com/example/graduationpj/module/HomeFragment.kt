@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import com.example.graduationpj.R
 import com.example.graduationpj.module.communication.CommunicationHomeFragment
 import com.example.graduationpj.module.media.MediaHomeFragment
-import com.example.graduationpj.module.navigation.CurrentLocationFragment
 import com.example.graduationpj.module.navigation.NavigationHomeFragment
 import com.example.graduationpj.module.note.NoteHomeFragment
 import com.example.graduationpj.module.service.ServiceHomeFragment
@@ -94,8 +93,8 @@ class HomeFragment : BaseTitleFragment() {
         }
 
         navigationTv.setOnClickListener {
-            //start(NavigationHomeFragment.newInstance())
-            start(CurrentLocationFragment.newInstance())
+            start(NavigationHomeFragment.newInstance())
+            //start(CurrentLocationFragment.newInstance())
         }
         noteTv.setOnClickListener {
             start(NoteHomeFragment.newInstance())

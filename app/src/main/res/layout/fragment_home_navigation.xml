@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <com.amap.api.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/exitIv"
@@ -21,81 +22,105 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/startCl"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginHorizontal="12dp"-->
-<!--        android:layout_marginBottom="17.5dp"-->
-<!--        android:background="@drawable/shape_sfff_c10"-->
-<!--        android:paddingHorizontal="16dp"-->
-<!--        android:paddingTop="17dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/endCl">-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/startCl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin = "8dp"
+        android:background="@drawable/shape_sfff_c10"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/endCl">
 
-<!--        <TextView-->
-<!--            android:id="@+id/startPlaceTv"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="18dp"-->
-<!--            android:layout_marginTop="3dp"-->
-<!--            android:text="@string/start_place"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
+        <TextView
+            android:id="@+id/startPlaceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_place"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <EditText-->
-<!--            android:id="@+id/startInfoEt"-->
-<!--            style="@style/s18_c333_b"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="12dp"-->
+        <EditText
+            android:id="@+id/startInfoEt"
+            style="@style/s16_c333"
+            android:padding="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:autofillHints="@string/start_place_hint"
+            android:background="@color/color_f1f2f4"
+            android:hint="@string/start_place_hint"
+            android:inputType="text"
+            app:layout_constraintBaseline_toBaselineOf="@+id/startPlaceTv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/startPlaceTv"
+            tools:text="北京市海淀区   183****7685  乐乐" />
 
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/startPlaceTv"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            tools:text="北京市海淀区   183****7685  乐乐"-->
-<!--            android:autofillHints="@string/start_place_hint"-->
-<!--            android:inputType="text"-->
-<!--            android:hint="@string/start_place_hint"/>-->
+        <View
+            android:id="@+id/gapLineView"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="4dp"
+            android:background="#e6e6e6"
+            app:layout_constraintTop_toBottomOf="@+id/startInfoEt" />
 
-<!--        <View-->
-<!--            android:id="@+id/gapLineView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0.5dp"-->
-<!--            android:layout_marginTop="4dp"-->
-<!--            android:background="#e6e6e6"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/startInfoEt" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/endCl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/shape_sfff_c10"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@id/placeRv">
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/endCl"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginHorizontal="12dp"-->
-<!--        android:layout_marginBottom="17.5dp"-->
-<!--        android:background="@drawable/shape_sfff_c10"-->
-<!--        android:paddingHorizontal="16dp"-->
-<!--        android:paddingTop="17dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent">-->
+        <TextView
+            android:id="@+id/endPlaceTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/end_place"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/endPlaceTv"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="18dp"-->
-<!--            android:layout_marginTop="3dp"-->
-<!--            android:text="@string/end_place"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/endInfoEt"-->
-<!--            style="@style/s18_c333_b"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="12dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/endPlaceTv"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            tools:text="北京市海淀区阳光灿烂小区5号楼三单元1811   183****7685  乐乐" />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+        <AutoCompleteTextView
+            android:id="@+id/endInfoEt"
+            style="@style/s16_c333"
+            android:layout_width="0dp"
+            android:padding="3dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:background="@color/color_f1f2f4"
+            android:completionThreshold="1"
+            android:dropDownVerticalOffset="1.0dip"
+            android:hint="请输入终点"
+            android:imeOptions="actionDone"
+            android:inputType="text|textAutoComplete"
+            android:maxLength="20"
+            android:singleLine="true"
+            app:layout_constraintBaseline_toBaselineOf="@+id/endPlaceTv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/endPlaceTv" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/placeRv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/endCl"
+        app:layout_constraintBottom_toTopOf="@id/confirmTv"/>
+    <TextView
+        android:id="@+id/confirmTv"
+        style="@style/s12_c333"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/shape_c23_g_normal"
+        android:gravity="center"
+        android:paddingVertical="8dp"
+        android:text="开始导航"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
