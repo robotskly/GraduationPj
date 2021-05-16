@@ -1,6 +1,5 @@
 package com.example.graduationpj.module.navigation
 
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,21 +12,17 @@ import com.amap.api.location.AMapLocationClientOption
 import com.amap.api.location.AMapLocationListener
 import com.amap.api.maps.*
 import com.amap.api.maps.LocationSource.OnLocationChangedListener
-import com.amap.api.maps.model.BitmapDescriptorFactory
-import com.amap.api.maps.model.LatLng
-import com.amap.api.maps.model.MyLocationStyle
-import com.amap.api.maps.model.RouteOverlay
+import com.amap.api.maps.model.*
 import com.amap.api.services.core.AMapException
 import com.amap.api.services.core.LatLonPoint
-import com.amap.api.services.geocoder.GeocodeResult
-import com.amap.api.services.geocoder.GeocodeSearch
-import com.amap.api.services.geocoder.RegeocodeResult
+import com.amap.api.services.geocoder.*
 import com.amap.api.services.route.*
 import com.amap.api.services.route.RouteSearch.DriveRouteQuery
 import com.amap.api.services.route.RouteSearch.FromAndTo
 import com.example.graduationpj.MyApplication
 import com.example.graduationpj.R
 import com.example.graduationpj.support.base.page.BaseTitleFragment
+import com.example.graduationpj.support.utils.AMapUtil
 import com.example.graduationpj.support.utils.ToastUtil
 import kotlinx.android.synthetic.main.fragment_home_navigation.*
 
@@ -49,6 +44,9 @@ class NavigationHomeFragment : BaseTitleFragment(), AMapLocationListener, Locati
     private var geocoderSearch:GeocodeSearch?=null
     private val ROUTE_TYPE_DRIVE = 2
     private var driveRouteResult:DriveRouteResult?=null
+
+    private var startGeoMarker: Marker? = null//起点marker
+    private var endGeoMarker: Marker? = null//终点marker
 
     companion object {
         fun newInstance(): NavigationHomeFragment {
@@ -100,7 +98,16 @@ class NavigationHomeFragment : BaseTitleFragment(), AMapLocationListener, Locati
         uiSettings?.isZoomControlsEnabled = true//支持缩放
         uiSettings?.isMyLocationButtonEnabled = true // 设置默认定位按钮是否显示
         uiSettings?.isCompassEnabled = true //  指南针
-
+        startGeoMarker = mMap?.addMarker(
+            MarkerOptions()
+                .anchor(0.5f, 0.5f)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+        )
+        endGeoMarker = mMap?.addMarker(
+            MarkerOptions()
+                .anchor(0.5f, 0.5f)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+        )
         cameraUpdate = CameraUpdateFactory.zoomTo(15f)
         mMap?.moveCamera(cameraUpdate)
         /**
@@ -117,6 +124,7 @@ class NavigationHomeFragment : BaseTitleFragment(), AMapLocationListener, Locati
         myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(R.drawable.icon_warning_mini))
         myLocationStyle.strokeWidth(0f)
         myLocationStyle.radiusFillColor(Color.TRANSPARENT)
+        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATE) ;//定位一次，且将视角移动到地图中心点。
         //myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_FOLLOW_NO_CENTER);//连续定位、蓝点不会移动到地图中心点，并且蓝点会跟随设备移动。
         //myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_MAP_ROTATE);//连续定位、且将视角移动到地图中心点，地图依照设备方向旋转，定位点会跟随设备移动。（1秒1次定位）
         mMap?.myLocationStyle = myLocationStyle
@@ -125,6 +133,7 @@ class NavigationHomeFragment : BaseTitleFragment(), AMapLocationListener, Locati
         /**
          * 驾车路线搜索
          */
+        routeSearch = RouteSearch(context)
         routeSearch?.setRouteSearchListener(this)
     }
 
@@ -135,10 +144,18 @@ class NavigationHomeFragment : BaseTitleFragment(), AMapLocationListener, Locati
                 Toast.makeText(context,"起点或终点不能为空",Toast.LENGTH_SHORT)
                 return@setOnClickListener
             }
-            searchRouteResult(ROUTE_TYPE_DRIVE, RouteSearch.DrivingDefault)
+            getLatlon(endInfoEt.text.toString())
+          //  searchRouteResult(ROUTE_TYPE_DRIVE, RouteSearch.DrivingDefault)
         }
     }
 
+    /**
+     * 响应地理编码
+     */
+    fun getLatlon(name: String?) {
+        val query = GeocodeQuery(name, "苏州") // 第一个参数表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode，
+        geocoderSearch!!.getFromLocationNameAsyn(query) // 设置同步地理编码请求
+    }
     /**
      * 开始搜索路径规划方案
      */
@@ -232,27 +249,71 @@ class NavigationHomeFragment : BaseTitleFragment(), AMapLocationListener, Locati
         mapView!!.onDestroy()
     }
 
-    override fun onRegeocodeSearched(p0: RegeocodeResult?, p1: Int) {}
 
-    override fun onGeocodeSearched(p0: GeocodeResult?, p1: Int) {}
+    override fun onRegeocodeSearched(result: RegeocodeResult?, rCode: Int) {
+//        if (rCode == AMapException.CODE_AMAP_SUCCESS) {
+//            if (result != null && result.regeocodeAddress != null && result.regeocodeAddress.formatAddress != null
+//            ) {
+//                var addressName = (result.regeocodeAddress.formatAddress
+//                        + "附近")
+//                mMap?.animateCamera(
+//                    CameraUpdateFactory.newLatLngZoom(
+//                        AMapUtil.convertToLatLng(latLonPoint), 15f
+//                    )
+//                )
+//                startGeoMarker?.setPosition(AMapUtil.convertToLatLng(latLonPoint))
+//                ToastUtil.show(context, addressName)
+//            } else {
+//                ToastUtil.show(context, "没有结果")
+//            }
+//        } else {
+//            ToastUtil.showerror(context, rCode)
+//        }
+    }
 
-    override fun onDriveRouteSearched(p0: DriveRouteResult?, p1: Int) {
+    override fun onGeocodeSearched(result: GeocodeResult?, rCode: Int) {
+        if (rCode == AMapException.CODE_AMAP_SUCCESS) {
+            if (result != null && result.getGeocodeAddressList() != null && result.getGeocodeAddressList().size > 0) {
+                val address: GeocodeAddress = result.getGeocodeAddressList().get(0)
+                //Todo listSelect
+                if (address != null) {
+                    mMap?.animateCamera(
+                        CameraUpdateFactory.newLatLngZoom(AMapUtil.convertToLatLng(address.latLonPoint), 15f)
+                    )
+                     endGeoMarker?.setPosition(
+                        AMapUtil.convertToLatLng(address.latLonPoint)
+                    )
+                    endPoint = address.latLonPoint
+                    searchRouteResult(ROUTE_TYPE_DRIVE, RouteSearch.DrivingDefault)
+                    var addressName = """
+                        经纬度值:${address.latLonPoint}
+                        位置描述:${address.formatAddress}
+                        """.trimIndent()
+                    ToastUtil.show(context, addressName)
+                }
+            } else {
+                ToastUtil.show(context, "没有结果")
+            }
+        } else {
+            ToastUtil.showerror(context, rCode)
+        }
+    }
+
+    //搜索路线
+    override fun onDriveRouteSearched(result: DriveRouteResult?, rCode: Int) {
        // dissmissProgressDialog()
         mMap?.clear() // 清理地图上的所有覆盖物
-        if(p1 == AMapException.CODE_AMAP_SUCCESS){
-            if(p0!=null && p0.paths != null){
-                if(p0.paths.size >0){
-                    driveRouteResult = p0
+        if(rCode == AMapException.CODE_AMAP_SUCCESS){
+            if(result!=null && result.paths != null){
+                if(result.paths.size >0){
+                    driveRouteResult = result
                     val drivePath: DrivePath = driveRouteResult?.paths?.get(0) ?: return
                     val drivingRouteOverlay = DrivingRouteOverlay(
                         context, mMap, drivePath,
                         driveRouteResult?.startPos,
-                        driveRouteResult?.targetPos, null
-                    )
+                        driveRouteResult?.targetPos, null)
                     drivingRouteOverlay.setNodeIconVisibility(false) //设置节点marker是否显示
-
                     drivingRouteOverlay.setIsColorfulline(true) //是否用颜色展示交通拥堵情况，默认true
-
                     drivingRouteOverlay.removeFromMap()
                     drivingRouteOverlay.addToMap()
                     drivingRouteOverlay.zoomToSpan()
