@@ -1,25 +1,20 @@
 package com.example.graduationpj.support.base.page
 
+import android.app.ProgressDialog
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import com.example.graduationpj.MyApplication
 import com.example.graduationpj.R
 import com.example.graduationpj.support.base.model.WeatherEnum
-import com.example.graduationpj.support.base.page.view.BaseTitleView
 import com.example.graduationpj.support.ext.getStatusBarHeight
 import com.example.graduationpj.support.network.NetWorkAPI
 import com.example.graduationpj.support.network.NetWorkTask
 import com.example.graduationpj.support.network.TaskCallBack
 import kotlinx.android.synthetic.main.fragment_base_title.*
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
-import java.lang.Exception
-import kotlin.concurrent.thread
 
 abstract class BaseTitleFragment : BaseFragment() {
     abstract fun onCreateContentView(
@@ -36,6 +31,9 @@ abstract class BaseTitleFragment : BaseFragment() {
     private var weatherEnum: WeatherEnum? = null
     private var weatherIcon: Drawable? = null
     private var weatherText: String? = null
+
+    private var progDialog: ProgressDialog? = null // 搜索时进度条
+
 
     var isTitleViewHidden: Boolean = false
         set(value) {
@@ -99,5 +97,22 @@ abstract class BaseTitleFragment : BaseFragment() {
                 return
             }
         })
+    }
+
+    fun showLoadingDialog(){
+        if (progDialog == null) {
+            progDialog = ProgressDialog(MyApplication.context)
+        }
+        progDialog?.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+        progDialog?.setIndeterminate(false)
+        progDialog?.setCancelable(true)
+        progDialog?.setMessage("正在搜索")
+        progDialog?.show()
+    }
+
+    fun dismissLoadingDialog(){
+        if (progDialog != null) {
+            progDialog!!.dismiss()
+        }
     }
 }
