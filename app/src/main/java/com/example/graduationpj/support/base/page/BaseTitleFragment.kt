@@ -11,9 +11,6 @@ import com.example.graduationpj.MyApplication
 import com.example.graduationpj.R
 import com.example.graduationpj.support.base.model.WeatherEnum
 import com.example.graduationpj.support.ext.getStatusBarHeight
-import com.example.graduationpj.support.network.NetWorkAPI
-import com.example.graduationpj.support.network.NetWorkTask
-import com.example.graduationpj.support.network.TaskCallBack
 import kotlinx.android.synthetic.main.fragment_base_title.*
 
 abstract class BaseTitleFragment : BaseFragment() {
@@ -63,7 +60,7 @@ abstract class BaseTitleFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //initTopBarData()
-        requestWeatherInfo()
+        //requestWeatherInfo()
         updateTopBarView()
     }
 
@@ -87,17 +84,17 @@ abstract class BaseTitleFragment : BaseFragment() {
         mStatusBarBgView.visibility = if (isStatusBarBgViewHidden) View.GONE else View.VISIBLE
     }
 
-    private fun requestWeatherInfo() {
-        NetWorkTask.newTask().requestInfo(NetWorkAPI.WeatherAPI+"北京",object :TaskCallBack{
-            override fun onFail(e: Exception) {
-                return
-            }
-
-            override fun onSuccess(res: String) {
-                return
-            }
-        })
-    }
+//    private fun requestWeatherInfo() {
+//        NetWorkTask.newTask().requestInfo(ApiConfig.WeatherAPI+"北京",object :TaskCallBack{
+//            override fun onFail(e: Exception) {
+//                return
+//            }
+//
+//            override fun onSuccess(res: String) {
+//                return
+//            }
+//        })
+//    }
 
     fun showLoadingDialog(){
         if (progDialog == null) {
