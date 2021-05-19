@@ -5,17 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.graduationpj.R
-import com.example.graduationpj.module.login.model.User
-import com.example.graduationpj.module.login.task.MovieService
+import com.example.graduationpj.module.login.task.LoginLoader
 import com.example.graduationpj.support.base.page.BaseTitleFragment
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.example.graduationpj.support.network.Fault
+import com.example.graduationpj.support.utils.ToastUtil
+import kotlinx.android.synthetic.main.fragment_login.*
 
 
 class LoginHomeFragment : BaseTitleFragment() {
+
+    var loginLoader:LoginLoader?=null
+
+    var loginName:Int?=null
+    var loginPassword:String?=null
+
     companion object {
         fun newInsatnce(): LoginHomeFragment {
             return LoginHomeFragment()
@@ -30,28 +33,89 @@ class LoginHomeFragment : BaseTitleFragment() {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
-    fun onRequest() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initData()
+        initView()
+        initAction()
+    }
+    fun initData(){
+        loginLoader = LoginLoader()
+    }
+    fun initView(){
 
-        val BaseUrl = "https://api.douban.com/v2/movie/"
-        val retrofit: Retrofit = Retrofit.Builder()
-            .baseUrl(BaseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    }
+    fun initAction(){
 
-        val movieService = retrofit.create(MovieService::class.java)
-        val call: Call<User> = movieService.getTop250(0,20)
+        loginBtTv.setOnClickListener {
+            loginName = loginNameEt.text.toString().toInt()
+            loginPassword = passwordEt.text.toString()
+            requestLogin(loginName?:0,loginPassword?:"")
+        }
 
-        call.enqueue(object :Callback<User>{
-            override fun onFailure(call: Call<User>?, t: Throwable?) {
-                TODO("Not yet implemented")
+        registerTv.setOnClickListener {
+            start(RegisterHomeFragment.newInstance())
+        }
+
+        changePasswordTv.setOnClickListener {
+            start(ChangePasswordFragment.newInstance())
+        }
+    }
+
+    /**
+     * private void getMovieList(){
+    mMovieLoader.getMovie(0,10).subscribe(new Action1<List<Movie>>() {
+    @Override
+    public void call(List<Movie> movies) {
+    mMovieAdapter.setMovies(movies);
+    mMovieAdapter.notifyDataSetChanged();
+    }
+    }, new Action1<Throwable>() {
+    @Override
+    public void call(Throwable throwable) {
+    Log.e("TAG","error message:"+throwable.getMessage());
+    if(throwable instanceof Fault){
+    Fault fault = (Fault) throwable;
+    if(fault.getErrorCode() == 404){
+    //错误处理
+    }else if(fault.getErrorCode() == 500){
+    //错误处理
+    }else if(fault.getErrorCode() == 501){
+    //错误处理
+    }
+    }
+    }
+    });
+
+    }
+     */
+
+    fun requestLogin(iduser:Int,password:String){
+        loginLoader?.login(iduser,password)?.subscribe(
+            {
+                //成功处理
+                if(it != null){
+                    ToastUtil.show(context,"登录成功")
+                }else{
+                    ToastUtil.show(context,"账号密码错误")
+                }
+            },
+            {
+                //失败处理
+                it as Fault
+                when(it.errorCode){
+                    500->{
+                        ToastUtil.show(context,"500")
+                    }
+                    501->{
+                        ToastUtil.show(context,"501")
+                    }
+                    404->{
+                        ToastUtil.show(context,"404")
+                    }
+                }
             }
-
-            override fun onResponse(call: Call<User>?, response: Response<User>?) {
-                TODO("Not yet implemented")
-            }
-
-        })
-
+        )
     }
 
 

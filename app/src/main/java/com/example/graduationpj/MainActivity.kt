@@ -7,6 +7,8 @@ import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.graduationpj.module.HomeFragment
+import com.example.graduationpj.module.login.LoginHomeFragment
+import com.example.graduationpj.module.logindemo.login.LoginFragment
 import me.yokeyword.fragmentation.SupportActivity
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -32,9 +34,10 @@ class MainActivity:SupportActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        loadRootFragment(R.id.containerRoot,HomeFragment.newInstance())
+        loadRootFragment(R.id.containerRoot, LoginFragment.newInstance())
+        //loadRootFragment(R.id.containerRoot,HomeFragment.newInstance())
         askPermission()
-        println(Test.sHA1(this))
+        //println(Test.sHA1(this))
         //start(HomeFragment.newInstance())
     }
     private fun askPermission(){

@@ -8,6 +8,6 @@ public class ApiConfig {
     /**
      * 服务器地址，应该根据 DEBUG 判断选用哪个环境
      */
-    public static final String BASE_URL = "127.0.0.1:8080/";
+    public static final String BASE_URL = "http://192.168.137.28:8080/";
 
 }

@@ -78,7 +78,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         style="@android:style/Widget.ProgressBar.Horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/songListSv"
+        app:layout_constraintTop_toBottomOf="@+id/musicListRv"
         app:layout_constraintBottom_toTopOf="@+id/musicActionLl"
         />
     <LinearLayout

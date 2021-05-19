@@ -56,6 +56,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/passwordEt"
         style="@style/s18_c333"
         android:layout_width="0dp"
         android:layout_height="40dp"
@@ -72,6 +73,21 @@
         app:layout_constraintTop_toBottomOf="@+id/loginNameEt" />
 
     <TextView
+        android:id="@+id/loginBtTv"
+        style="@style/s18_c333"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@drawable/shape_c23_g_normal"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="登录"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEt" />
+
+    <TextView
+        android:id="@+id/registerTv"
         style="@style/s12_cff5c19"
         android:layout_width="wrap_content"
         android:layout_height="26dp"
@@ -86,6 +102,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/changePasswordTv"
         style="@style/s12_cff5c19"
         android:layout_width="wrap_content"
         android:layout_height="26dp"

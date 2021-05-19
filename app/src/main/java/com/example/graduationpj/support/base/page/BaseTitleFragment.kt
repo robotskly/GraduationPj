@@ -56,7 +56,9 @@ abstract class BaseTitleFragment : BaseFragment() {
         contentFl.addView(onCreateContentView(inflater, container, savedInstanceState))
         return mRootView
     }
-
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //initTopBarData()
@@ -84,17 +86,6 @@ abstract class BaseTitleFragment : BaseFragment() {
         mStatusBarBgView.visibility = if (isStatusBarBgViewHidden) View.GONE else View.VISIBLE
     }
 
-//    private fun requestWeatherInfo() {
-//        NetWorkTask.newTask().requestInfo(ApiConfig.WeatherAPI+"北京",object :TaskCallBack{
-//            override fun onFail(e: Exception) {
-//                return
-//            }
-//
-//            override fun onSuccess(res: String) {
-//                return
-//            }
-//        })
-//    }
 
     fun showLoadingDialog(){
         if (progDialog == null) {

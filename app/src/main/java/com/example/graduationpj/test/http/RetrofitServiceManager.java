@@ -1,6 +1,6 @@
-package com.example.graduationpj.support.network;
+package com.example.graduationpj.test.http;
 
-
+import com.example.graduationpj.support.network.ApiConfig;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,6 +27,8 @@ public class RetrofitServiceManager {
         // 添加公共参数拦截器
         HttpCommonInterceptor commonInterceptor = new HttpCommonInterceptor.Builder()
                 .addHeaderParams("paltform","android")
+                .addHeaderParams("userToken","1234343434dfdfd3434")
+                .addHeaderParams("userId","123445")
                 .build();
         builder.addInterceptor(commonInterceptor);
 
