@@ -1,4 +1,4 @@
-package com.example.graduationpj.support.network;
+package com.example.graduationpj.support.dep_network;
 
 /**
  * 异常处理类，将异常包装成一个 Fault ,抛给上层统一处理

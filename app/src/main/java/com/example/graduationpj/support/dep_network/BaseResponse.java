@@ -1,4 +1,4 @@
-package com.example.graduationpj.support.network;
+package com.example.graduationpj.support.dep_network;
 
 /**
  *

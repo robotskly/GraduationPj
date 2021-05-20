@@ -4,35 +4,48 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.example.graduationpj.R
-import com.example.graduationpj.module.logindemo.base.BaseActivity
 import com.example.graduationpj.module.logindemo.bean.Accounts
-import com.example.graduationpj.module.logindemo.utils.toast
+import com.example.graduationpj.support.base.page.BaseTitleFragment
 import kotlinx.android.synthetic.main.activity_register.*
 
-class MusicRegisterActivity : BaseActivity(), RegisterContract.View {
+class RegisterFragment : BaseTitleFragment(), RegisterContract.View {
     private var registerPresenter: RegisterContract.Presenter? = null
 
     companion object{
         fun startActivity(ctx: Context){
-            val i = Intent(ctx, MusicRegisterActivity::class.java)
+            val i = Intent(ctx, RegisterFragment::class.java)
             ctx.startActivity(i)
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreateContentView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+       return inflater.inflate(R.layout.activity_register,container,false)
     }
 
-    override fun getLayout(): Int {
-        return R.layout.activity_register
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initData()
+        initViews()
+        initAction()
     }
 
-    override fun initData() {
+
+    fun initData() {
         RegisterPresenter(this)
     }
 
-    override fun initViews() {
+    fun initViews() {
+
+    }
+    fun initAction(){
         btn_register.setOnClickListener {
             goRegister()
         }
@@ -68,10 +81,6 @@ class MusicRegisterActivity : BaseActivity(), RegisterContract.View {
         return true
     }
 
-    override fun setupToolbar() {
-
-    }
-
     override fun getUserName(): String {
         return input_name.text.toString()
     }
@@ -90,11 +99,11 @@ class MusicRegisterActivity : BaseActivity(), RegisterContract.View {
 
     override fun registerSuccess(userAccount: Accounts) {
         //toast("注册成功!${userAccount.result.username}${userAccount.result.password}")
-        finish()
+        //Todo
     }
 
     override fun registerFail(msg: String) {
-        toast("注册失败,${msg}!")
+
     }
 
     override fun setPresenter(presenter: RegisterContract.Presenter) {

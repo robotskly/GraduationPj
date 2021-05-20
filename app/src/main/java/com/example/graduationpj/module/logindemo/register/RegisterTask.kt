@@ -2,9 +2,9 @@ package com.wyq.logindemo.register
 
 import com.example.graduationpj.module.logindemo.register.RegisterContract
 import com.example.graduationpj.module.logindemo.bean.Accounts
-import com.example.graduationpj.module.logindemo.common.Constant
+import com.example.graduationpj.support.network.ConfigConst
 import com.example.graduationpj.module.logindemo.net.APIService
-import com.example.graduationpj.module.logindemo.net.RetrofitManager
+import com.example.graduationpj.support.network.RetrofitManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,7 +23,7 @@ class RegisterTask : RegisterContract.Task {
         callback = onRegisterCallBack
 
         val registerService =
-            RetrofitManager.getService(Constant.REQUEST_BASE_URL, APIService.Register::class.java)
+            RetrofitManager.getService(ConfigConst.REQUEST_BASE_URL, APIService.Register::class.java)
         val registerCallBack = registerService.toRegister(name.toInt(), pwd)
         registerCallBack.enqueue(object : Callback<Accounts> {
 

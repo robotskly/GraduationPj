@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.example.graduationpj.R
 import com.example.graduationpj.module.login.task.LoginLoader
 import com.example.graduationpj.support.base.page.BaseTitleFragment
-import com.example.graduationpj.support.network.Fault
+import com.example.graduationpj.support.dep_network.Fault
 import com.example.graduationpj.support.utils.ToastUtil
 import kotlinx.android.synthetic.main.fragment_login.*
 

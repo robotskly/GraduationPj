@@ -40,7 +40,6 @@
 
     <EditText
         android:id="@+id/loginNameEt"
-
         style="@style/s18_c333"
         android:layout_width="0dp"
         android:layout_height="40dp"
@@ -100,17 +99,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/passwordConfirmTv"
         app:layout_constraintTop_toBottomOf="@+id/passwordEt" />
+
     <TextView
+        android:id="@+id/registerTv"
+        style="@style/s18_cffffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/registerTv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordConfirmTv"
+        android:layout_marginTop="52dp"
         android:background="@drawable/shape_c23_g_normal"
-        android:layout_marginTop="56dp"
-        style="@style/s18_cffffff"
         android:gravity="center"
         android:padding="16dp"
-        android:text="@string/register"/>
+        android:text="@string/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordConfirmTv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

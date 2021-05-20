@@ -1,7 +1,7 @@
 package com.example.graduationpj.module.logindemo.base
 
 import com.example.graduationpj.MyApplication
-import com.example.graduationpj.module.logindemo.utils.toast
+import com.example.graduationpj.support.utils.toast
 import java.io.Serializable
 
 /**

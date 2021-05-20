@@ -1,6 +1,6 @@
 package com.example.graduationpj.test.http;
 
-import com.example.graduationpj.support.network.ApiConfig;
+import com.example.graduationpj.support.dep_network.ApiConfig;
 
 import java.util.concurrent.TimeUnit;
 

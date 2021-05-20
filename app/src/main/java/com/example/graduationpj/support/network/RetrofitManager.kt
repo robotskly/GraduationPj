@@ -1,4 +1,4 @@
-package com.example.graduationpj.module.logindemo.net
+package com.example.graduationpj.support.network
 
 import android.util.Log
 import okhttp3.OkHttpClient
@@ -16,7 +16,9 @@ class RetrofitManager {
 
         fun <T> getService(url:String,service: Class<T>):T{
             //根据你传的service来进行不同的请求
-            return createRetrofit(url).create(service)
+            return createRetrofit(
+                url
+            ).create(service)
         }
 
         private fun createRetrofit(url: String):Retrofit{

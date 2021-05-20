@@ -1,14 +1,11 @@
 package com.example.graduationpj.module.login.task
 
 import com.example.graduationpj.module.login.model.User
-import com.example.graduationpj.support.network.ObjectLoader
-import com.example.graduationpj.support.network.RetrofitServiceManager
-import com.example.graduationpj.test.movie.Movie
-import com.example.graduationpj.test.movie.MovieSubject
+import com.example.graduationpj.support.dep_network.ObjectLoader
+import com.example.graduationpj.support.dep_network.RetrofitServiceManager
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
-import rx.functions.Func1
 
 class LoginLoader() : ObjectLoader() {
 

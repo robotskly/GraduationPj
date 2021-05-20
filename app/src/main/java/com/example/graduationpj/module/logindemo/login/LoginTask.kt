@@ -1,9 +1,9 @@
 package com.example.graduationpj.module.logindemo.login
 
 import com.example.graduationpj.module.logindemo.bean.Accounts
-import com.example.graduationpj.module.logindemo.common.Constant
+import com.example.graduationpj.support.network.ConfigConst
 import com.example.graduationpj.module.logindemo.net.APIService
-import com.example.graduationpj.module.logindemo.net.RetrofitManager
+import com.example.graduationpj.support.network.RetrofitManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,7 +22,7 @@ class LoginTask: LoginContract.Task {
         onLoginCallBack: LoginContract.Presenter.OnLoginCallBack
     ) {
         callBack = onLoginCallBack
-        val mLogin = RetrofitManager.getService(Constant.REQUEST_BASE_URL, APIService.Login::class.java)
+        val mLogin = RetrofitManager.getService(ConfigConst.REQUEST_BASE_URL, APIService.Login::class.java)
         if (username != null && password!!.isNotEmpty()){
             val longCall = mLogin.toLogin(username, password)
             longCall.enqueue(object : Callback<Accounts> {

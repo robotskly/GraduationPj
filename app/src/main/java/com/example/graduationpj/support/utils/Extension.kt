@@ -1,4 +1,4 @@
-package com.example.graduationpj.module.logindemo.utils
+package com.example.graduationpj.support.utils
 
 import android.content.Context
 import android.widget.Toast

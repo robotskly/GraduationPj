@@ -1,15 +1,14 @@
 package com.example.graduationpj.module.logindemo.login
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.graduationpj.R
+import com.example.graduationpj.module.logindemo.changepassword.RegisterHomeFragment
 
-import com.example.graduationpj.module.logindemo.utils.SPUtil
+import com.example.graduationpj.support.utils.SPUtil
 import com.example.graduationpj.support.base.page.BaseTitleFragment
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -50,7 +49,7 @@ class LoginFragment: BaseTitleFragment(), LoginContract.View {
             userToLogin()
         }
         register.setOnClickListener {
-            //Todo
+            start(RegisterHomeFragment.newInstance())
         }
     }
 
@@ -58,7 +57,6 @@ class LoginFragment: BaseTitleFragment(), LoginContract.View {
         if (checkUserInfo()){
             loginPresenter?.goLogin(getUserName(),getPwd())
         }
-
     }
 
     private fun checkUserInfo(): Boolean {
@@ -83,22 +81,14 @@ class LoginFragment: BaseTitleFragment(), LoginContract.View {
     override fun getPwd(): String {
         return password.text.toString()
     }
-
     override fun loginSuccess() {
-
         SPUtil.saveLogin(true)
        //Todo
-
     }
-
     override fun loginFail(msg: String) {
 
     }
-
     override fun setPresenter(presenter: LoginContract.Presenter) {
         loginPresenter = presenter
     }
-
-
-
 }
