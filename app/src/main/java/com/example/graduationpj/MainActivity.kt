@@ -34,7 +34,7 @@ class MainActivity:SupportActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        loadRootFragment(R.id.containerRoot, LoginFragment.newInstance())
+        loadRootFragment(R.id.containerRoot, HomeFragment.newInstance())
         //loadRootFragment(R.id.containerRoot,HomeFragment.newInstance())
         askPermission()
         //println(Test.sHA1(this))

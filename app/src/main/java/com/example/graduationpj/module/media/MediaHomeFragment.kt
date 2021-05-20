@@ -1,12 +1,10 @@
 package com.example.graduationpj.module.media
 
-import android.media.MediaPlayer
-import android.media.MediaPlayer.OnPreparedListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.graduationpj.R
 import com.example.graduationpj.module.media.model.Song
@@ -15,11 +13,10 @@ import com.example.graduationpj.module.media.view.SongCardView
 import com.example.graduationpj.support.base.page.BaseTitleFragment
 import com.example.graduationpj.support.utils.MusicUtil
 import kotlinx.android.synthetic.main.fragment_home_media.*
-import java.io.IOException
+import okhttp3.internal.notify
 
 
 class MediaHomeFragment : BaseTitleFragment() {
-    private val mediaPlayer: MediaPlayer = MediaPlayer()
     private var songArrayList: ArrayList<Song> = arrayListOf()
     private var songCardViewList: ArrayList<SongCardView> = arrayListOf()
     private var localMusicAdapter:LocalMusicAdapter?=null
@@ -58,35 +55,23 @@ class MediaHomeFragment : BaseTitleFragment() {
         //initRv
         musicListRv.layoutManager = LinearLayoutManager(context)
         // musicListRv.addItemDecoration()
-        localMusicAdapter = LocalMusicAdapter(context!!,songArrayList)
+        localMusicAdapter = LocalMusicAdapter(context!!,songArrayList,object :LocalMusicAdapter.NotifyUI{
+            override fun notifyUI(song: Song?) {
+                songTitleTv.text = song?.songName
+                singerInfoTv.text = song?.songSinger
+            }
+
+        })
         musicListRv.adapter = localMusicAdapter
     }
 
     private fun initAction() {
-        songCardViewList.forEach { cardView ->
-            cardView.setOnClickListener {
-                play(cardView.getSongPath())
-            }
+        moreSongIv.setOnClickListener{
+            musicListRv.isVisible = !musicListRv.isVisible
+            music_bg.isVisible = !musicListRv.isVisible
         }
     }
 
-    fun play(path: String?) {
-        try {
-            //        重置音频文件，防止多次点击会报错
-            mediaPlayer.reset()
-            //        调用方法传进播放地址
-            mediaPlayer.setDataSource(path)
-            //            异步准备资源，防止卡顿
-            mediaPlayer.prepareAsync()
-            //            调用音频的监听方法，音频准备完毕后响应该方法进行音乐播放
-            mediaPlayer.setOnPreparedListener(OnPreparedListener {
-                    mediaPlayer -> mediaPlayer.start()
-            })
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        updateView()
-    }
 
     private fun updateView() {
 

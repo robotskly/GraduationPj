@@ -9,17 +9,21 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationpj.R
 import com.example.graduationpj.module.media.model.Song
+import com.example.graduationpj.support.utils.MusicUtil
 
-class LocalMusicAdapter(context:Context,list:ArrayList<Song>): RecyclerView.Adapter<LocalMusicAdapter.MusicViewHolder>() {
+class LocalMusicAdapter(context:Context,list:ArrayList<Song>,notifyUI: NotifyUI): RecyclerView.Adapter<LocalMusicAdapter.MusicViewHolder>() {
 
-    var list: ArrayList<Song>? = null
-    var inflater: LayoutInflater? = null
-    var context: Context? = null
+    private var list: ArrayList<Song>? = null
+    private var inflater: LayoutInflater? = null
+    private var context: Context? = null
+   // private var clickListener:View.OnClickListener?=null
+    private var notifyUI:NotifyUI?=null
 
     init {
         this.list = list
         this.inflater = LayoutInflater.from(context)
         this.context = context
+        this.notifyUI = notifyUI
     }
 
     class MusicViewHolder(itemView: View?, context: Context) : RecyclerView.ViewHolder(itemView!!) {
@@ -38,11 +42,17 @@ class LocalMusicAdapter(context:Context,list:ArrayList<Song>): RecyclerView.Adap
         holder.songTitleTv?.text = list?.get(position)?.songName
         holder.songSingerTv?.text = list?.get(position)?.songSinger
         holder.durationTv?.text = list?.get(position)?.songDuration.toString()
-        //holder?.songPicIv?.setImageDrawable(list?.get(position)?.songPicPath)
+        holder.itemView.setOnClickListener {
+            MusicUtil.playOGG(list?.get(position)?.songPath)
+            notifyUI?.notifyUI(list?.get(position))
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
         return MusicViewHolder(inflater?.inflate(R.layout.view_song_card, parent, false), context!!)
+    }
+    interface NotifyUI{
+        fun notifyUI(song:Song?)
     }
 
 }

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:src="@drawable/icon_option_train_test"
+        android:src="@drawable/icon_song"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:gravity="start"
-        app:layout_constraintEnd_toStartOf="@+id/moreMenuIv"
+        app:layout_constraintEnd_toStartOf="@+id/moreSongIv"
         app:layout_constraintStart_toEndOf="@+id/songPicIv"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="很爱很爱你" />
@@ -35,18 +35,18 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="2dp"
         android:gravity="start"
-        app:layout_constraintEnd_toStartOf="@+id/moreMenuIv"
+        app:layout_constraintEnd_toStartOf="@+id/moreSongIv"
         app:layout_constraintStart_toEndOf="@+id/songPicIv"
         app:layout_constraintTop_toBottomOf="@+id/songTitleTv"
         tools:text="刘若英" />
 
     <ImageView
-        android:id="@+id/moreMenuIv"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:id="@+id/moreSongIv"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:src="@drawable/icon_more_select"
+        android:src="@drawable/icon_songlist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/songTitleTv"
         app:layout_constraintTop_toTopOf="parent" />
@@ -60,56 +60,71 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/singerInfoTv" />
+
+    <ImageView
+        android:id="@+id/music_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/bg_music"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/musicProgressPb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/split1View" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/musicListRv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/musicProgressPb"
-        app:layout_constraintTop_toBottomOf="@+id/split1View"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/split1View" />
 
     <ProgressBar
         android:id="@+id/musicProgressPb"
+        style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_margin="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/musicListRv"
         app:layout_constraintBottom_toTopOf="@+id/musicActionLl"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <LinearLayout
         android:id="@+id/musicActionLl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="36dp"
         android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
         android:weightSum="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
         <ImageView
             android:id="@+id/musicPreIv"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_pre"/>
+            android:layout_weight="1"
+            android:src="@drawable/icon_pre" />
+
         <ImageView
             android:id="@+id/musicPlayIv"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/selector_media_play_stop"/>
+            android:layout_weight="1"
+            android:src="@drawable/selector_media_play_stop" />
+
         <ImageView
             android:id="@+id/musicNextIv"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_next"/>
+            android:layout_weight="1"
+            android:src="@drawable/icon_next" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
