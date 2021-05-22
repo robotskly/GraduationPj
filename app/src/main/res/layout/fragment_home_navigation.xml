@@ -26,7 +26,7 @@
         android:id="@+id/startCl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin = "8dp"
+        android:layout_margin="8dp"
         android:background="@drawable/shape_sfff_c10"
         android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/endCl">
@@ -42,7 +42,6 @@
         <EditText
             android:id="@+id/startInfoEt"
             style="@style/s16_c333"
-            android:padding="3dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -50,6 +49,7 @@
             android:background="@color/color_f1f2f4"
             android:hint="@string/start_place_hint"
             android:inputType="text"
+            android:padding="3dp"
             app:layout_constraintBaseline_toBaselineOf="@+id/startPlaceTv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/startPlaceTv"
@@ -72,7 +72,7 @@
         android:layout_margin="8dp"
         android:background="@drawable/shape_sfff_c10"
         android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@id/placeRv">
+        app:layout_constraintTop_toBottomOf="@id/startCl">
 
         <TextView
             android:id="@+id/endPlaceTv"
@@ -87,7 +87,6 @@
             android:id="@+id/endInfoEt"
             style="@style/s16_c333"
             android:layout_width="0dp"
-            android:padding="3dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:background="@color/color_f1f2f4"
@@ -97,19 +96,23 @@
             android:imeOptions="actionDone"
             android:inputType="text|textAutoComplete"
             android:maxLength="20"
+            android:padding="3dp"
             android:singleLine="true"
             app:layout_constraintBaseline_toBaselineOf="@+id/endPlaceTv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/endPlaceTv" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/placeRv"
+        android:id="@+id/addressRv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="160dp"
+        android:layout_margin="12dp"
+        android:background="@color/color_f1f2f4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/endCl"
-        app:layout_constraintBottom_toTopOf="@id/confirmTv"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endCl" />
+
     <TextView
         android:id="@+id/confirmTv"
         style="@style/s12_c333"
