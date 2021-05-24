@@ -12,7 +12,11 @@
     <string name="menu_media_service">多媒体</string>
     <string name="menu_user_center">个人中心</string>
     <string name="menu_communicate">联系</string>
-
+    <string name="weather_live">实时</string>
+    <string name="weather_forecast">预报</string>
+    <string name="report_time">发布时间</string>
+    <string name="location_share">位置分享</string>
+    <string name="no_result">没有结果</string>
     <string name="play_music">播放音乐</string>
     <string name="stop_music">停止播放</string>
     <string name="next_music">下一首歌</string>

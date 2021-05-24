@@ -13,7 +13,7 @@ import com.example.graduationpj.support.base.model.WeatherEnum
 import com.example.graduationpj.support.ext.getStatusBarHeight
 import kotlinx.android.synthetic.main.fragment_base_title.*
 
-abstract class BaseTitleFragment : BaseFragment() {
+abstract class BaseTitleFragment() : BaseFragment() {
     abstract fun onCreateContentView(
         inflater: LayoutInflater,
         container: ViewGroup?,

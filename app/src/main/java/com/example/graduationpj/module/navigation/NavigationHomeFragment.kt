@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.amap.api.location.AMapLocation
 import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
@@ -29,6 +28,9 @@ import com.amap.api.services.route.RouteSearch.DriveRouteQuery
 import com.amap.api.services.route.RouteSearch.FromAndTo
 import com.example.graduationpj.MyApplication
 import com.example.graduationpj.R
+import com.example.graduationpj.module.navigation.adapter.AddressAdapter
+import com.example.graduationpj.module.navigation.navigation.GPSNaviFragment
+import com.example.graduationpj.module.navigation.overlays.DrivingRouteOverlay
 import com.example.graduationpj.support.base.page.BaseTitleFragment
 import com.example.graduationpj.support.utils.AMapUtil
 import com.example.graduationpj.support.utils.ToastUtil
@@ -153,6 +155,7 @@ class NavigationHomeFragment : BaseTitleFragment(), AMapLocationListener, Locati
                 Toast.makeText(context, "起点或终点不能为空", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            start(GPSNaviFragment())
             //   searchRouteResult(ROUTE_TYPE_DRIVE, RouteSearch.DrivingDefault)
         }
         endInfoEt.addTextChangedListener {
@@ -236,11 +239,15 @@ class NavigationHomeFragment : BaseTitleFragment(), AMapLocationListener, Locati
             val poiItems: MutableList<PoiItem> =
                 java.util.ArrayList()
             poiItems.add(item)
-            val mpoiadapter = AddressAdapter(poiItems, object : AddressAdapter.GetAddress {
-                override fun getAddress(index: Int) {
-                    endPoint = poiItems[index].latLonPoint
-                }
-            })
+            val mpoiadapter =
+                AddressAdapter(
+                    poiItems,
+                    object :
+                        AddressAdapter.GetAddress {
+                        override fun getAddress(index: Int) {
+                            endPoint = poiItems[index].latLonPoint
+                        }
+                    })
             addressRv.adapter = mpoiadapter
         } else {
             ToastUtil.showerror(context, rCode)
@@ -253,28 +260,33 @@ class NavigationHomeFragment : BaseTitleFragment(), AMapLocationListener, Locati
         if (rCode == AMapException.CODE_AMAP_SUCCESS) {
             if (result != null) {
                 val poiItems: List<PoiItem> = result.pois
-                val mpoiadapter = AddressAdapter(poiItems, object : AddressAdapter.GetAddress {
-                    override fun getAddress(index: Int) {
+                val mpoiadapter =
+                    AddressAdapter(
+                        poiItems,
+                        object :
+                            AddressAdapter.GetAddress {
+                            override fun getAddress(index: Int) {
 
-                        //用户点击选择之后
-                        val address = poiItems[index]
-                        mMap?.animateCamera(
-                            CameraUpdateFactory.newLatLngZoom(
-                                AMapUtil.convertToLatLng(address.latLonPoint),
-                                15f
-                            )
-                        )
-                        endGeoMarker?.position = AMapUtil.convertToLatLng(address.latLonPoint)
-                        endPoint = address.latLonPoint
-                        val addressName = """
+                                //用户点击选择之后
+                                val address = poiItems[index]
+                                mMap?.animateCamera(
+                                    CameraUpdateFactory.newLatLngZoom(
+                                        AMapUtil.convertToLatLng(address.latLonPoint),
+                                        15f
+                                    )
+                                )
+                                endGeoMarker?.position =
+                                    AMapUtil.convertToLatLng(address.latLonPoint)
+                                endPoint = address.latLonPoint
+                                val addressName = """
                     经纬度值:${address.latLonPoint}
                     位置描述:${address.businessArea}
                     """.trimIndent()
-                        searchRouteResult(ROUTE_TYPE_DRIVE, RouteSearch.DrivingDefault)
-                        addressRv.isVisible = false
-                        ToastUtil.show(context, addressName)
-                    }
-                })
+                                searchRouteResult(ROUTE_TYPE_DRIVE, RouteSearch.DrivingDefault)
+                                addressRv.isVisible = false
+                                ToastUtil.show(context, addressName)
+                            }
+                        })
                 addressRv.adapter = mpoiadapter
                 addressRv.isVisible = true
             }
@@ -318,6 +330,14 @@ class NavigationHomeFragment : BaseTitleFragment(), AMapLocationListener, Locati
      * 6。搜索路线之后的回掉
      * 将路线图层添加到地图
      */
+    /**
+     通过 DriveRouteQuery(RouteSearch.FromAndTo fromAndTo, int mode, List<LatLonPoint> passedByPoints, List<List<LatLonPoint>> avoidpolygons, String avoidRoad) 设置搜索条件，方法对应的参数说明如下：
+    fromAndTo，路径的起点终点；
+    mode，路径规划的策略，可选，默认为0-速度优先；详细策略请见驾车策略说明；
+    passedByPoints，途经点，可选；
+    avoidpolygons，避让区域，可选，支持32个避让区域，每个区域最多可有16个顶点。如果是四边形则有4个坐标点，如果是五边形则有5个坐标点。
+    avoidRoad，避让道路，只支持一条避让道路，避让区域和避让道路同时设置，只有避让道路生效。
+     */
     override fun onDriveRouteSearched(result: DriveRouteResult?, rCode: Int) {
         mMap?.clear() // 清理地图上的所有覆盖物
         if (rCode == AMapException.CODE_AMAP_SUCCESS) {
@@ -325,11 +345,12 @@ class NavigationHomeFragment : BaseTitleFragment(), AMapLocationListener, Locati
                 if (result.paths.size > 0) {
                     driveRouteResult = result
                     driveRouteResult?.paths?.forEachIndexed { index, drivePath ->
-                        val drivingRouteOverlay = DrivingRouteOverlay(
-                            context, mMap, drivePath,
-                            driveRouteResult?.startPos,
-                            driveRouteResult?.targetPos, null
-                        )
+                        val drivingRouteOverlay =
+                            DrivingRouteOverlay(
+                                context, mMap, drivePath,
+                                driveRouteResult?.startPos,
+                                driveRouteResult?.targetPos, null
+                            )
                         drivingRouteOverlay.setNodeIconVisibility(false) //设置节点marker是否显示
                         drivingRouteOverlay.setIsColorfulline(true) //是否用颜色展示交通拥堵情况，默认true
                         drivingRouteOverlay.removeFromMap()

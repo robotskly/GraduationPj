@@ -155,26 +155,26 @@
                 android:id="@+id/userInfoCl"
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
-                app:optionIcon="@drawable/icon_option_history_task"
+                app:optionIcon="@drawable/icon_usercenter"
                 app:optionText="@string/user_info" />
             <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
                 android:id="@+id/vehicleInfoCl"
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
-                app:optionIcon="@drawable/icon_option_history_task"
+                app:optionIcon="@drawable/icon_vehicle_info"
                 app:optionText="@string/vehicle_info" />
             <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
                 android:id="@+id/settingCl"
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
-                app:optionIcon="@drawable/icon_option_history_task"
+                app:optionIcon="@drawable/icon_setting"
                 app:optionText="@string/system_setting" />
             <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
                 android:id="@+id/updateCl"
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
-                app:optionIcon="@drawable/icon_option_history_task"
-                app:optionText="@string/update_info" />
+                app:optionIcon="@drawable/icon_history_note"
+                app:optionText="备忘录记录" />
 
 
             <TextView
