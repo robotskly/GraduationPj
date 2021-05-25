@@ -99,4 +99,6 @@ dependencies {
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
     implementation 'com.google.android.material:material:1.2.1'
+    //Datapickerview
+    compile 'com.contrarywind:Android-PickerView:4.1.6'
 }

@@ -107,8 +107,6 @@ class RegisterHomeFragment :BaseTitleFragment(){
             }
 
         })
-
-
     }
 
 
