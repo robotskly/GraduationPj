@@ -3,6 +3,7 @@ package com.example.graduationpj.module.logindemo.login
 import com.example.graduationpj.module.logindemo.bean.Accounts
 import com.example.graduationpj.support.network.ConfigConst
 import com.example.graduationpj.module.logindemo.net.APIService
+import com.example.graduationpj.support.login.LoginManager
 import com.example.graduationpj.support.network.RetrofitManager
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,9 +36,10 @@ class LoginTask: LoginContract.Task {
 
                     var result: Accounts? = response.body()
                     if (result != null && 100 == result.code){
-                        callBack?.loginSuccess()
+                        callBack?.loginSuccess(result.data)
+                        LoginManager.user = result.data
                     }else{
-                        callBack?.loginFail(result!!.msg)
+                        callBack?.loginFail(result?.msg?:"")
                     }
                 }
             })

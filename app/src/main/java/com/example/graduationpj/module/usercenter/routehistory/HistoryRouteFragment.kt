@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bigkoo.pickerview.builder.TimePickerBuilder
 import com.bigkoo.pickerview.listener.OnTimeSelectListener
@@ -23,6 +24,7 @@ import com.example.graduationpj.support.login.LoginManager
 import com.example.graduationpj.support.network.BaseCallBack
 import com.example.graduationpj.support.network.ConfigConst
 import com.example.graduationpj.support.network.RetrofitManager
+import com.example.graduationpj.support.utils.ConvertUtil
 import kotlinx.android.synthetic.main.fragment_history_route.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,15 +34,16 @@ import java.util.*
 
 class HistoryRouteFragment : BaseTitleFragment() {
     private lateinit var pvTime: TimePickerView
-    private var dateSelect: Date? = null
+    private var dateSelect: Date? = Date(System.currentTimeMillis())
         set(value) {
+            datePickerTv.text = getTime(dateSelect!!)
             Toast.makeText(context, getTime(value!!), Toast.LENGTH_SHORT).show()
             requestRecord {
 
             }
             field = value
         }
-    private var routeList:List<RouteModel> = listOf()
+    private var routeList:List<RouteModel>? = listOf()
 
 
     companion object {
@@ -69,6 +72,7 @@ class HistoryRouteFragment : BaseTitleFragment() {
     }
 
     fun initView() {
+        datePickerTv.text = ConvertUtil.date2StringYMD(dateSelect!!)
         initTimePicker()
         requestRecord{
             historyTraceRv.layoutManager = LinearLayoutManager(context)
@@ -77,13 +81,14 @@ class HistoryRouteFragment : BaseTitleFragment() {
     }
 
     fun initAction() {
-
+        datePickerTv.setOnClickListener {
+            pvTime.show()
+        }
     }
 
     private fun initTimePicker() {//Dialog 模式下，在底部弹出
         pvTime = TimePickerBuilder(context, object : OnTimeSelectListener {
             override fun onTimeSelect(date: Date?, v: View?) {
-                //Todo
                 datePickerTv.text = getTime(date!!)
                 dateSelect = date
             }
@@ -95,6 +100,7 @@ class HistoryRouteFragment : BaseTitleFragment() {
             .isDialog(true)
             .setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
             .build()
+
 
         val mDialog: Dialog = pvTime.dialog
         val params = FrameLayout.LayoutParams(
@@ -119,8 +125,8 @@ class HistoryRouteFragment : BaseTitleFragment() {
     }
 
     private fun requestRecord(callBack: (Boolean) -> Unit) {
-        var routeTask = RetrofitManager.getService(ConfigConst.REQUEST_BASE_URL,APIService.GetRouteList::class.java)
-        val routeTaskCall  = routeTask.toGetRoute(LoginManager.user?.iduser!!,dateSelect!!)
+        val routeTask = RetrofitManager.getService(ConfigConst.REQUEST_BASE_URL,APIService.GetRouteList::class.java)
+        val routeTaskCall  = routeTask.toGetRoute(LoginManager.user?.iduser?:1,dateSelect?:Date(System.currentTimeMillis()))
 
         routeTaskCall.enqueue(object: Callback<RouteMessage>{
             override fun onFailure(call: Call<RouteMessage>?, t: Throwable?) {
@@ -128,7 +134,12 @@ class HistoryRouteFragment : BaseTitleFragment() {
             }
 
             override fun onResponse(call: Call<RouteMessage>?, response: Response<RouteMessage>?) {
-                routeList = response?.body()?.data!!
+                if(response?.body()?.data!=null){
+                    noTraceTv.isVisible = false
+                    routeList = response.body()?.data
+                }else{
+                    noTraceTv.isVisible = true
+                }
                 callBack.invoke(true)
             }
 

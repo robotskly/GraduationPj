@@ -11,7 +11,7 @@ import com.example.graduationpj.R
 import com.example.graduationpj.module.usercenter.routehistory.model.RouteModel
 import com.example.graduationpj.support.utils.ConvertUtil
 
-class RouteRecordAdapter(data: List<RouteModel>) :
+class RouteRecordAdapter(data: List<RouteModel>?) :
     RecyclerView.Adapter<RouteRecordAdapter.RouteViewHolder>() {
 
     var data: List<RouteModel>? = null

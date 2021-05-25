@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.graduationpj.R
+import com.example.graduationpj.module.HomeFragment
+import com.example.graduationpj.module.logindemo.bean.User
 import com.example.graduationpj.module.logindemo.changepassword.RegisterHomeFragment
 
 import com.example.graduationpj.support.utils.SPUtil
 import com.example.graduationpj.support.base.page.BaseTitleFragment
+import com.example.graduationpj.support.login.LoginManager
 import kotlinx.android.synthetic.main.activity_login.*
 
 /**
@@ -81,9 +84,9 @@ class LoginFragment: BaseTitleFragment(), LoginContract.View {
     override fun getPwd(): String {
         return password.text.toString()
     }
-    override fun loginSuccess() {
+    override fun loginSuccess(user:User) {
         SPUtil.saveLogin(true)
-       //Todo
+        start(HomeFragment.newInstance())
     }
     override fun loginFail(msg: String) {
 

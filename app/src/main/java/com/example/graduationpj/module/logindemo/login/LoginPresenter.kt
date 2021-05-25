@@ -1,5 +1,6 @@
 package com.example.graduationpj.module.logindemo.login
 
+import com.example.graduationpj.module.logindemo.bean.User
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
@@ -16,9 +17,9 @@ class LoginPresenter(val view: LoginContract.View): LoginContract.Presenter, Log
         doAsync {
             mTask?.login(username,password,object : LoginContract.Presenter.OnLoginCallBack{
 
-                override fun loginSuccess() {
+                override fun loginSuccess(user:User) {
                     uiThread {
-                        view.loginSuccess()
+                        view.loginSuccess(user)
                     }
                 }
 
@@ -36,8 +37,8 @@ class LoginPresenter(val view: LoginContract.View): LoginContract.Presenter, Log
 
     }
 
-    override fun loginSuccess() {
-        view.loginSuccess()
+    override fun loginSuccess(user:User) {
+        view.loginSuccess(user)
     }
 
     override fun loginFail(message: String) {

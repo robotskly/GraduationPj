@@ -78,7 +78,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/salaryValueTv"
+            android:id="@+id/historyValueTv"
             style="@style/s27_c333_b"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -112,7 +112,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/salaryTodayTv"
+            android:id="@+id/traceTodayTv"
             style="@style/s27_c333_b"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -145,30 +145,35 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="24dp">
+
             <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
                 android:id="@+id/historyTraceCl"
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
                 app:optionIcon="@drawable/icon_option_history_task"
                 app:optionText="@string/history_route" />
+
             <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
                 android:id="@+id/userInfoCl"
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
                 app:optionIcon="@drawable/icon_usercenter"
                 app:optionText="@string/user_info" />
+
             <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
                 android:id="@+id/vehicleInfoCl"
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
                 app:optionIcon="@drawable/icon_vehicle_info"
                 app:optionText="@string/vehicle_info" />
+
             <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
                 android:id="@+id/settingCl"
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
                 app:optionIcon="@drawable/icon_setting"
                 app:optionText="@string/system_setting" />
+
             <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
                 android:id="@+id/updateCl"
                 android:layout_width="match_parent"

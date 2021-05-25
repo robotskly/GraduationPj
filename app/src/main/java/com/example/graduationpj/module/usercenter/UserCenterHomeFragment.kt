@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.graduationpj.R
+import com.example.graduationpj.module.usercenter.basicinfo.BasicInfoFragment
+import com.example.graduationpj.module.usercenter.routehistory.HistoryRouteFragment
 import com.example.graduationpj.support.base.page.BaseTitleFragment
+import kotlinx.android.synthetic.main.fragment_home_user_center.*
 
 class UserCenterHomeFragment :BaseTitleFragment(){
     companion object{
@@ -32,10 +35,29 @@ class UserCenterHomeFragment :BaseTitleFragment(){
 
     }
     private fun initView(){
-
+        traceTodayTv.text = "198.2"
+        historyValueTv.text = "0"
+        userNameTv.text = "1234"
     }
     private fun initAction(){
+        historyTraceCl.setOnClickListener {
+            start(HistoryRouteFragment.newInstance())
+        }
+        userInfoCl.setOnClickListener {
+            start(BasicInfoFragment.newInstance())
+        }
+        vehicleInfoCl.setOnClickListener {
 
+        }
+        settingCl.setOnClickListener {
+
+        }
+        updateCl.setOnClickListener {
+
+        }
+        quitAccountTv.setOnClickListener {
+
+        }
     }
 
 
