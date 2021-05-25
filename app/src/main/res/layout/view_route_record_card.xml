@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="8dp">
+
+    <TextView
+        android:id="@+id/startPlaceTv"
+        style="@style/s16_c333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="苏州" />
+
+    <View
+        android:id="@+id/splitView"
+        android:layout_width="16dp"
+        android:layout_height="1dp"
+        android:layout_margin="4dp"
+        android:background="@color/color_333333"
+        app:layout_constraintBottom_toBottomOf="@+id/startPlaceTv"
+        app:layout_constraintEnd_toStartOf="@+id/endPlaceTv"
+        app:layout_constraintStart_toEndOf="@id/startPlaceTv"
+        app:layout_constraintTop_toTopOf="@+id/startPlaceTv" />
+
+    <TextView
+        android:id="@+id/endPlaceTv"
+        style="@style/s16_c333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        app:layout_constraintStart_toEndOf="@+id/splitView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="扬州" />
+
+    <TextView
+        android:id="@+id/routeTime"
+        style="@style/s12_c333"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startPlaceTv"
+        tools:text="2021-3-12" />
+
+    <TextView
+        android:id="@+id/routeMiles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="30km" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/routeDuration"
+        app:layout_constraintStart_toEndOf="@+id/endPlaceTv"
+        app:layout_constraintEnd_toStartOf="@+id/routeMiles"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/s12_c333"
+        tools:text="32min"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
