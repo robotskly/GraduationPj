@@ -36,14 +36,19 @@ class HistoryRouteFragment : BaseTitleFragment() {
     private lateinit var pvTime: TimePickerView
     private var dateSelect: Date? = Date(System.currentTimeMillis())
         set(value) {
-            datePickerTv.text = getTime(dateSelect!!)
-            Toast.makeText(context, getTime(value!!), Toast.LENGTH_SHORT).show()
-            requestRecord {
-
-            }
             field = value
+            datePickerTv.text = getTime(value!!)
+            Toast.makeText(context, getTime(value), Toast.LENGTH_SHORT).show()
+            requestRecord {
+                if(it){
+                    historyTraceRv.layoutManager = LinearLayoutManager(context)
+                    historyTraceRv.adapter = RouteRecordAdapter(routeList)
+                }else{
+                    Toast.makeText(context,"网络错误",Toast.LENGTH_SHORT).show()
+                }
+            }
         }
-    private var routeList:List<RouteModel>? = listOf()
+    private var routeList:MutableList<RouteModel>? = mutableListOf()
 
 
     companion object {
@@ -75,8 +80,12 @@ class HistoryRouteFragment : BaseTitleFragment() {
         datePickerTv.text = ConvertUtil.date2StringYMD(dateSelect!!)
         initTimePicker()
         requestRecord{
-            historyTraceRv.layoutManager = LinearLayoutManager(context)
-            historyTraceRv.adapter = RouteRecordAdapter(routeList)
+            if(it){
+                historyTraceRv.layoutManager = LinearLayoutManager(context)
+                historyTraceRv.adapter = RouteRecordAdapter(routeList)
+            }else{
+                Toast.makeText(context,"网络错误",Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -89,7 +98,6 @@ class HistoryRouteFragment : BaseTitleFragment() {
     private fun initTimePicker() {//Dialog 模式下，在底部弹出
         pvTime = TimePickerBuilder(context, object : OnTimeSelectListener {
             override fun onTimeSelect(date: Date?, v: View?) {
-                datePickerTv.text = getTime(date!!)
                 dateSelect = date
             }
         }).setTimeSelectChangeListener {
@@ -100,7 +108,6 @@ class HistoryRouteFragment : BaseTitleFragment() {
             .isDialog(true)
             .setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
             .build()
-
 
         val mDialog: Dialog = pvTime.dialog
         val params = FrameLayout.LayoutParams(
@@ -126,23 +133,22 @@ class HistoryRouteFragment : BaseTitleFragment() {
 
     private fun requestRecord(callBack: (Boolean) -> Unit) {
         val routeTask = RetrofitManager.getService(ConfigConst.REQUEST_BASE_URL,APIService.GetRouteList::class.java)
-        val routeTaskCall  = routeTask.toGetRoute(LoginManager.user?.iduser?:1,dateSelect?:Date(System.currentTimeMillis()))
+        val routeTaskCall  = routeTask.toGetRoute(LoginManager.user?.iduser?:1,ConvertUtil.date2StringYMDHMS(dateSelect?:Date(System.currentTimeMillis())))
 
         routeTaskCall.enqueue(object: Callback<RouteMessage>{
             override fun onFailure(call: Call<RouteMessage>?, t: Throwable?) {
                 callBack.invoke(false)
             }
-
             override fun onResponse(call: Call<RouteMessage>?, response: Response<RouteMessage>?) {
                 if(response?.body()?.data!=null){
                     noTraceTv.isVisible = false
+                    routeList?.clear()
                     routeList = response.body()?.data
                 }else{
                     noTraceTv.isVisible = true
                 }
                 callBack.invoke(true)
             }
-
         })
     }
 }

@@ -6,16 +6,16 @@ import java.util.*
 
 
 data class RouteMessage(
-    val data: List<RouteModel>,
+    val data: MutableList<RouteModel>,
     val msg: String,
     val code: Int
 ) : Serializable
 
 data class RouteModel(
-    var routeId:Int?=null,
-    var routeStartPlace:String? = null,
-    var routeEndPlace:String? = null,
-    var routeDuration:Int?=null,
-    var routeStartTime:Date?=null,
-    var routeMiles:Int?=null
+    var idroute:Int?=null,
+    var startplace:String? = null,
+    var endplace:String? = null,
+    var routeduration:Int?=null,
+    var routestartdate:String?=null,
+    var vehicleid:Int?=null
 ):Serializable

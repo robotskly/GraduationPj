@@ -175,11 +175,12 @@
                 app:optionText="@string/system_setting" />
 
             <com.example.graduationpj.module.usercenter.view.UserCenterOptionView
-                android:id="@+id/updateCl"
+                android:id="@+id/noteListCl"
                 android:layout_width="match_parent"
                 android:layout_height="62dp"
                 app:optionIcon="@drawable/icon_history_note"
                 app:optionText="备忘录记录" />
+
 
 
             <TextView

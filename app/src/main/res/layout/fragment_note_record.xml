@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/datePickerTv"
+        style="@style/s18_c333"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/icon_arrow_down"
+        android:gravity="center"
+        android:padding="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2021-3-21" />
+
+    <EditText
+        android:id="@+id/titleSelectEt"
+        style="@style/s18_c333"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginHorizontal="12dp"
+        android:background="@drawable/shape_e9ecf0_c16"
+        android:hint="请输入查询关键字"
+        android:paddingHorizontal="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/selectTv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePickerTv" />
+
+    <TextView
+        android:id="@+id/selectTv"
+        style="@style/s18_c333"
+        android:layout_width="48dp"
+        android:layout_height="30dp"
+        android:layout_marginHorizontal="12dp"
+        android:background="@drawable/bg_shadow_btn"
+        android:padding="3dp"
+        android:text="查询"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/datePickerTv" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/historyNoteRv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleSelectEt" />
+
+    <TextView
+        android:id="@+id/noNoteTv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="无备忘录记录"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePickerTv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

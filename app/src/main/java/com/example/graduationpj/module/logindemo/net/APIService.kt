@@ -1,6 +1,7 @@
 package com.example.graduationpj.module.logindemo.net
 
 import com.example.graduationpj.module.logindemo.bean.Accounts
+import com.example.graduationpj.module.usercenter.noterecord.model.NoteMessage
 import com.example.graduationpj.module.usercenter.routehistory.model.RouteMessage
 import com.example.graduationpj.module.usercenter.routehistory.model.RouteModel
 import retrofit2.Call
@@ -44,9 +45,27 @@ class APIService {
         @FormUrlEncoded
         @POST("route")
         fun toGetRoute(
-            @Field("") username:Int,
-            @Field("") date:java.util.Date
+            @Field("username") username:Int,
+            @Field("date") date:String
         ):Call<RouteMessage>
     }
 
+    interface GetNoteListByDate{
+        @FormUrlEncoded
+        @POST("getNoteByDate")
+        fun toGetNoteList(
+            @Field("userId") userId:Int,
+            @Field("date") date:String
+        ):Call<NoteMessage>
+    }
+
+    interface GetNoteListByTitle{
+        @FormUrlEncoded
+        @POST("getNoteByTitle")
+        fun toGetNoteList(
+            @Field("userId") userId:Int,
+            @Field("date") date:String,
+            @Field("content")content:String
+        ):Call<NoteMessage>
+    }
 }

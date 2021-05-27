@@ -1,5 +1,6 @@
 package com.example.graduationpj.module.usercenter.routehistory.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationpj.MyApplication
 import com.example.graduationpj.R
 import com.example.graduationpj.module.usercenter.routehistory.model.RouteModel
-import com.example.graduationpj.support.utils.ConvertUtil
 
 class RouteRecordAdapter(data: List<RouteModel>?) :
     RecyclerView.Adapter<RouteRecordAdapter.RouteViewHolder>() {
@@ -36,14 +36,13 @@ class RouteRecordAdapter(data: List<RouteModel>?) :
         return data?.count() ?: 0
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RouteViewHolder, position: Int) {
-        holder.routeStart.text = data?.get(position)?.routeStartPlace ?: ""
-        holder.routeEnd.text = data?.get(position)?.routeStartPlace ?: ""
-        holder.routeDuration.text = data?.get(position)?.routeDuration.toString() ?: ""
-        holder.routeStartTime.text =
-            ConvertUtil.date2StringYMD(data?.get(position)?.routeStartTime!!)
-        holder.routeMiles.text = data?.get(position)?.routeMiles.toString()
-
+        holder.routeStart.text = data?.get(position)?.startplace ?: ""
+        holder.routeEnd.text = data?.get(position)?.endplace ?: ""
+        holder.routeDuration.text = data?.get(position)?.routeduration.toString() +"min"
+        holder.routeStartTime.text = data?.get(position)?.routestartdate
+        holder.routeMiles.text = data?.get(position)?.vehicleid.toString() +"公里"
     }
 
     class RouteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
