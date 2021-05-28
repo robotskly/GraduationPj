@@ -33,11 +33,10 @@ class LoginTask: LoginContract.Task {
                 }
 
                 override fun onResponse(call: Call<Accounts>, response: Response<Accounts>) {
-
-                    var result: Accounts? = response.body()
+                    val result: Accounts? = response.body()
                     if (result != null && 100 == result.code){
                         callBack?.loginSuccess(result.data)
-                        LoginManager.user = result.data
+                        LoginManager.newInstance().user = result.data
                     }else{
                         callBack?.loginFail(result?.msg?:"")
                     }

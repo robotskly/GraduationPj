@@ -1,6 +1,8 @@
 package com.example.graduationpj.module.logindemo.net
 
 import com.example.graduationpj.module.logindemo.bean.Accounts
+import com.example.graduationpj.module.usercenter.basicinfo.model.AddressMessage
+import com.example.graduationpj.module.usercenter.basicinfo.model.VehicleMessage
 import com.example.graduationpj.module.usercenter.noterecord.model.NoteMessage
 import com.example.graduationpj.module.usercenter.routehistory.model.RouteMessage
 import com.example.graduationpj.module.usercenter.routehistory.model.RouteModel
@@ -67,5 +69,21 @@ class APIService {
             @Field("date") date:String,
             @Field("content")content:String
         ):Call<NoteMessage>
+    }
+
+    interface GetAddressById{
+        @FormUrlEncoded
+        @POST("address")
+        fun toGetAddr(
+            @Field("userId") userId:Int,
+        ):Call<AddressMessage>
+    }
+
+    interface GetVehicleById{
+        @FormUrlEncoded
+        @POST("vehicle")
+        fun toGetVehicleList(
+            @Field("userId") userId:Int,
+        ):Call<VehicleMessage>
     }
 }

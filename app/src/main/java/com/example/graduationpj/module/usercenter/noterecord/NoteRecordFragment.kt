@@ -139,7 +139,7 @@ class NoteRecordFragment :BaseTitleFragment(){
     private fun requestRecordByDate(callBack:(Boolean)->Unit){
         val noteTask = RetrofitManager.getService(ConfigConst.REQUEST_BASE_URL,APIService.GetNoteListByDate::class.java)
         val noteTaskCallback = noteTask.toGetNoteList(
-            LoginManager.user?.iduser?:0,
+            LoginManager.newInstance().user?.iduser?:0,
             ConvertUtil.date2StringYMD(dateSelect?:Date(System.currentTimeMillis()))
         )
 
@@ -158,7 +158,7 @@ class NoteRecordFragment :BaseTitleFragment(){
     private fun requestRecordByTitle(callBack:(Boolean)->Unit){
         val noteTask = RetrofitManager.getService(ConfigConst.REQUEST_BASE_URL,APIService.GetNoteListByTitle::class.java)
         val noteTaskCallback = noteTask.toGetNoteList(
-            LoginManager.user?.iduser?:0,
+            LoginManager.newInstance().user?.iduser?:0,
             ConvertUtil.date2StringYMD(dateSelect?:Date(System.currentTimeMillis())),
             titleContent?:""
         )

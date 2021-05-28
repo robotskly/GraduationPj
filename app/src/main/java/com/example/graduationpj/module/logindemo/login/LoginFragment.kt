@@ -5,6 +5,7 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.graduationpj.R
 import com.example.graduationpj.module.HomeFragment
 import com.example.graduationpj.module.logindemo.bean.User
@@ -87,9 +88,10 @@ class LoginFragment: BaseTitleFragment(), LoginContract.View {
     override fun loginSuccess(user:User) {
         SPUtil.saveLogin(true)
         start(HomeFragment.newInstance())
+        LoginManager.newInstance().user = user
     }
     override fun loginFail(msg: String) {
-
+        Toast.makeText(context,"密码错误",Toast.LENGTH_SHORT).show()
     }
     override fun setPresenter(presenter: LoginContract.Presenter) {
         loginPresenter = presenter

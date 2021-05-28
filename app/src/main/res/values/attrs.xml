@@ -99,4 +99,8 @@
         <attr name="optionText" format="string" />
         <attr name="optionIcon" format="reference" />
     </declare-styleable>
+    <declare-styleable name="UserInfoCardView">
+        <attr name="userInfoTitle" format="string"/>
+        <attr name="userInfoContent" format="string"/>
+    </declare-styleable>
 </resources>

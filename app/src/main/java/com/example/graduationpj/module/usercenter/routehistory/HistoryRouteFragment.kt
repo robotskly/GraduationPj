@@ -133,7 +133,7 @@ class HistoryRouteFragment : BaseTitleFragment() {
 
     private fun requestRecord(callBack: (Boolean) -> Unit) {
         val routeTask = RetrofitManager.getService(ConfigConst.REQUEST_BASE_URL,APIService.GetRouteList::class.java)
-        val routeTaskCall  = routeTask.toGetRoute(LoginManager.user?.iduser?:1,ConvertUtil.date2StringYMDHMS(dateSelect?:Date(System.currentTimeMillis())))
+        val routeTaskCall  = routeTask.toGetRoute(LoginManager.newInstance().user?.iduser?:1,ConvertUtil.date2StringYMDHMS(dateSelect?:Date(System.currentTimeMillis())))
 
         routeTaskCall.enqueue(object: Callback<RouteMessage>{
             override fun onFailure(call: Call<RouteMessage>?, t: Throwable?) {
